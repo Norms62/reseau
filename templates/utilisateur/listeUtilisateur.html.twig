@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1> Liste des utilisateurs</h1><br>
+{{form_start(form)}}
+<table class="table table-striped table-bordered">
+    {# Parcours des colonnes du presta#}
+    <thead>
+      <tr>
+        <th> Nom complet </th>
+        <th> email </th>
+        <th> Role </th>
+        <th> Supprimer </th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for l in liste %}
+            <tr><td>{{l.prenom}}</td>
+            <td>{{l.email}}</td>
+            <td>{{l.nom}}</td>
+            <td><input type="checkbox" name="UserSupp[]" value={{l.email}}></td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{{form_widget(form ,  { 'attr' : {'value' : 'Supprimer'}})}}
+{{form_end(form)}}
+{% endblock %}

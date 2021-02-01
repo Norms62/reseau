@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1> Ajout d'un nouvel utilisateur</h1><br>
+
+{{ form_start(form)}}
+{{ form_widget(form)}}
+    <label>Nom complet </label>
+    <input type="text" class="form-control" name="nomComplet" >
+    <label>Role </label>
+    <select  name='role' class="form-control">
+        <option value="Utilisateur"> Utilisateur </option>
+        <option value="Admin"> Admin </option>
+    </select><br><br>
+    <button type="submit" class="btn btn-success">Inscription</button>
+{{form_end(form)}}
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RequeteController!{% endblock %}
+
+{% block body %}
+    <h1> Ajout d'une nouvelle colonne </h1><br>
+    {{ form_start(form) }}
+    <h5><label>Nom de la nouvelle colonne </label></h5><br>
+    <input type="text" class="form-control" name="colonne" > <br><br>
+    {{form_row(form.Envoyer)}}
+    {{form_end(form)}}
+{% endblock %}

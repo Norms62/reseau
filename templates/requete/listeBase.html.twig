@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RequeteController!{% endblock %}
+
+{% block body %}
+    <br><h1> Liste des tables </h1><br>
+    <table class="table table-striped table-bordered">
+        <thead><tr>
+            <th> Tables </th>
+            <th> Modification </th>
+        </tr></thead>
+        <tbody>
+            {% for table in tables %}
+                <tr>
+                    <td>{{ table.nomTable }} </td>
+                    <td><a href="http://127.0.0.1:8000/listeBase/{{table.nomTable}}">Modifier </a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br><button type="button" class="btn btn-primary" onclick="document.location.href='{{path('newBase')}}';" >Ajouter un nouveau prestataire</button><br>
+{% endblock %}

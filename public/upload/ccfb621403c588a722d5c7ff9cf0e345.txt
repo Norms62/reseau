@@ -1,0 +1,637 @@
+Identifiant,Projet,Rapporteur,Assigné à,Priorité,Impact,Reproductibilité,État,Résolution,Catégorie,Date de soumission,Mis à jour,Afficher l’état,Résumé,Description,Temps passé (h)
+0019142,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,commentaire,ouvert,Evolution,2020-05-14,2020-08-31,public,Nouveau Profil SIGMA,"Bonjour Dominique Da Silva souhaite que Madame Federica SECHI puisse accéder à tout Réseau Entreprendre Italia, soit les 3 divisions suivantes : RE PIEMONTE / RE LOMBARDI / RE EMILIA.
+
+Est-ce qu'il est possible de lui octroyer l'accès à ces 3 divisions ?
+
+Merci d'avance pour votre retour,",1.75
+0019417,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Support,2020-07-24,2020-08-31,public,Ajout d'un prospect dans une liste de communication,"Bonjour,
+
+Karine Farnault qui utilise le compte ""loirevallee@reseau-entreprendre.org"" ne parvient pas à ajouter de prospect dans une liste de communication.
+Lorsqu'elle est sur la fiche prospect et tente l'ajout, elle ne voit pas ses listes de comm.
+
+Dans l'autre sens, depuis la liste de communication, elle ne peut pas ajouter de prospect.
+Il s'agit de la liste : PROSPECTS RELV.",0
+0018949,C2S - RESEAU ENTREPRENDRE,LHAMMEL,nchatainier,urgente,critique,aléatoire,accepté,résolu,Support,2020-03-23,2020-08-31,public,Tri des échéances sur les modèles word,"Bonjour, 
+
+Lors de l'export des échéanciers sur SIGMA, les échéances sur le document word sont très souvent dans le mauvais ordre. Il doit y avoir un problème dans le paramétrage du modèle word. 
+Je pense qu'il faudrait voir s'il est possible de préconfigurer le tri des données dans le tableau par n° puis par date prévue mais de mon côté je ne sais pas comment modifier le modèle word et l'intégrer. 
+Vous trouverez en PJ le modèle word de base intégré à SIGMA avec les champs qui doivent être dynamiques. ",8
+0018944,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,résolu,résolu,Evolution,2020-03-20,2020-08-31,public,adhésions (0001212),"Demande utilisateurs validée en club : donner la possibilité de lier plusieurs personnes à une adhésion (les associés d’une entreprise qui cotise par ex Michel et Augustin.). Aujourd’hui, l’utilisateur doit saisir l’associé avec une cotisation à 0€ pour lui accorder le statut membre sympathisant.",3.25
+0019494,C2S - RESEAU ENTREPRENDRE,FREMOND,nchatainier,élevée,majeur,toujours,commentaire,ouvert,Support,2020-08-04,2020-08-31,public,Modification d'échéancier,"Bonjour , 
+
+suite à plusieurs tentatives de modification d'échéancier pour le prêt MISTRETTA romain projet HUMANS, nous souhaitons ajouter deux lignes de plus au 66 échéances actuelles cependant la modification est refusée.
+Cf erreur sur la capture d'écran, les deux seules erreurs sont l'ajout de deux lignes supplémentaires. 
+
+Ce n'est pas le seul cas, nous avons plusieurs dossiers dans la meme situation. ",2
+0019431,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,quelques fois,commentaire,ouvert,Support,2020-07-29,2020-08-31,public,Plus de mise à jour dynamique des échéances aux dates choisies,"Bonjour,
+Mme Marine PASCAL du RE Loire nous a remonté des problèmes de mises à jour automatiques des échéances sur certains prêts comme : 
+- prêt GENTY Emmanuel : pas de mise à jour auto des 2 dernières échéances
+- prêt GAILLARD David : mauvaise date renseignée automatiquement pour le mois de Juillet (le27 au lieu du 20 qui est la date théorique)
+
+Je vous joins des captures d'écran des prêts cités.
+
+Merci par avance pour votre action.",0.75
+0019256,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,urgente,majeur,toujours,accepté,résolu,Support,2020-06-17,2020-08-31,public,Problème avec les invitations événements,"Bonjour,
+
+  Plusieurs personnes nous ont remonté que lors de l'envoi d'invitation par le biais d'un événement dans SIGMA,que le fichier .ics qui génère une planification agenda n'était pas à l'heure correspondant à l'événement.
+
+Par exemple sur l'événement : Conseil d'Administration du 25/06/2020
+10h 12h30 et dans la planification ( que vous trouverez en PJ ) l'heure n'est pas bonne.
+
+Une autre utilisatrice nous a remonté également que le lien de participation ne fonctionne plus depuis a minima 12h30 sur l'événement : 2020.07.16 CE Fabien THOLLOT.
+Cette même personne nous a remonté également que La participation n'est pas prise en compte dans l'évènement SIGMA mais je n'ai pas pu le vérifier.
+
+N'hésitez pas à revenir vers moi pour toute précision.",4
+0019398,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,urgente,mineur,n'a pas essayé,accepté,résolu,Support,2020-07-21,2020-08-31,public,Passerelle Sigma = Sage / Plvts bloqué,"Bonjour, nous avons reçu cette demande concernant SIGMA/SAGE :
+
+""Les mensualités du lauréat Edouard FORNAS (813FORNE) ne basculent pas de Sigma vers Sage.
+
+La mensualité reste dans les paiements à recevoir.
+
+Le problème date de de début 2020.""",4.5
+0019206,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,aléatoire,accepté,résolu,Support,2020-06-03,2020-08-31,public,Projet : Génération Décision de CE Lettre de Notification Favorable,"Bonjour,
+
+   Une personne nous a remonté un soucis aléatoire qui ne s'applique pas à tous les projets.
+Lorsque nous sommes sur la fiche projet, nous cliquons sur Modèle word puis :
+
+02_Décision de CE - Lettre de Notification Favorable.
+
+Le fichier généré est vierge.
+
+Par exemple : Projet JBM Distribution.
+
+Merci pour votre retour.
+
+Cordialement,
+
+François LEMOINE
+
+",2
+0018977,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Support,2020-03-25,2020-08-31,public,Dimension des images d'entête dans les événements (0001231),"Bonjour,
+Je constate que lorsque l'on change les dimensions des images d'entête cela ne change rien au format du mail envoyé.
+Ci-après les éléments vers mon événement :
+Les clés du Directeur Performant, les 18 et 19 septembre 2019 à Paris
+<https://reseauentreprendre.crm4.dynamics.com/main.aspx?etc=10075&extraqs=formid%3d0856bc39-de1e-4bc7-acf5-5361164ad0a5&id=%7bB56ED5F6-64A8-E911-A84D-000D3AB24CAC%7d&pagetype=entityrecord
+Il s'agit bien d'un événement DIFFERENT de celui pour lequel je vous ai signalé le message d'erreur lors de l’insertion de l'image de pied de page même si il porte le même nom.
+En PJ vous prouverez les copies d'écran en 100% et en 25%
+Merci beaucoup",1
+0019163,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,résolu,résolu,Support,2020-05-20,2020-08-28,public,Problème de devise sur un Prêt,"Bonjour,
+
+  Dominique DA SILVA nous a remonté un soucis sur le prêt au niveau du montant total qui est à la base de 30.000 dinar Tunisien mais aussi dans les mensualités de l’échéancier qui se met en euros et non pas en dinar. 
+
+Prêt TRABELSI Omar / Be3D.
+
+",2.5
+0019524,C2S - RESEAU ENTREPRENDRE,FREMOND,nchatainier,normale,mineur,S/O,accepté,résolu,Support,2020-08-14,2020-08-28,public,tableaux des vues,"Bonjour;
+
+merci de nous fournir une extraction de toutes les vues de SIGMA avec leur contenu (champs,...) ainsi que le créateur. 
+ 
+
+",0
+0018985,C2S - RESEAU ENTREPRENDRE,LHAMMEL,nchatainier,normale,majeur,aléatoire,accepté,résolu,Support,2020-03-26,2020-08-28,public,Problème d'envoi des événements,"Bonjour, j'ai reçu cette demande de la part d'une collègue : 
+
+J’ai été alerté par Guillaume de RE Auvergne sur le fait que les invitations créées dans SIGMA ne partent pas chez les destinataires. 
+Tu trouveras ci-après les liens vers les événements de RE Auvergne et le lien vers l’événement test que j’ai créé. 
+Pourras tu faire part de ce dysfonctionnement à Masao ? 
+
+
+Voici les liens vers deux 2 événements de RE Auvergne qui ne sont pas parti chez les destinataires :
+
+Club 2017bis Les Combattants Mercredi 1er avril 
+<https://reseauentreprendre.crm4.dynamics.com/main.aspx?etc=10075&extraqs=formid%3d0856bc39-de1e-4bc7-acf5-5361164ad0a5&id=%7bD66A3F68-EF6D-EA11-A811-000D3AB878DC%7d&pagetype=entityrecord
+
+
+Club 2019 Jeudi 2 avril de 9h30 à 12h 
+<https://reseauentreprendre.crm4.dynamics.com/main.aspx?etc=10075&extraqs=formid%3d0856bc39-de1e-4bc7-acf5-5361164ad0a5&id=%7bFCBCB8FE-F06D-EA11-A811-000D3AB878DC%7d&pagetype=entityrecord
+
+Voici le lien vers l’événement test que j’ai créée pour faire un essai d’envoi sans succès : 
+
+essai envoi evenement 
+<https://reseauentreprendre.crm4.dynamics.com/main.aspx?etc=10075&extraqs=formid%3d0856bc39-de1e-4bc7-acf5-5361164ad0a5&id=%7b0279454A-A86E-EA11-A811-000D3AB878DC%7d&pagetype=entityrecord
+
+
+D’autre part j’ai constaté que lorsque l’on envoie un e-mail test (fonctionnalité qui marche toujours) on a un fichier joint (conf mail en pièce jointe). Je ne sais pas à quoi cela correspond.
+
+Merci beaucoup.
+",2
+0019034,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,majeur,toujours,accepté,résolu,Support,2020-04-07,2020-08-28,public,R.E. Sigma – impossible de créer nouveau versement,"Bonjour,
+
+Je dois créer un nouveau versement dans Sigma sur le prêt de Berrada Fathi Amine, de l'entreprise Bubble VR. Et cela ne fonctionne pas. Lorsque je le crée et dclique sur Enregistrer, j'ai le message suivant : https://gyazo.com/782546421e55f4af0f0103089dd5f193
+
+Pourquoi ?
+Est-il possible de créer un versement ? merci !",2
+0018990,C2S - RESEAU ENTREPRENDRE,FCHABBI,nchatainier,élevée,mineur,S/O,accepté,résolu,Evolution,2020-03-26,2020-08-28,public,Montée de version Microsoft,"Préparer le passage à la nouvelle interface de l'outil (UI)
+Estimer les impacts",0
+0019332,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,élevée,majeur,toujours,accepté,résolu,Support,2020-07-07,2020-08-28,public,Problème d'affichage Événement SIGMA et incorporation d'image,"Bonjour,
+
+   Un grand nombre de collaborateur nous remonte régulièrement des soucis pour incorporer des images dans les événements. Des messages de ce type son récurrent :
+
+Erreur du processus d’entreprise
+'o' is an undeclared prefix. Line 1, position 213. Si vous contactez le support, veuillez indiquer les détails techniques.
+ID d'activité : 5dc0cc12-8f04-4dfb-b780-bf5fcf088529
+voir pièce jointe fichier d'erreur.
+
+",2
+0018972,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Evolution,2020-03-25,2020-08-28,public,Automatisation des liaisons Personne - Entreprise lié - (0001094),"Sur la fiche Personne d'un Membre accompagnateur d'un Projet, le lien avec les porteurs du projet accompagné, et le projet accompagné ne se fait pas automatiquement dans le bloc ""Personne et Entreprise Liée"" de la Personne qui accompagne.
+Sur la fiche Personne d'un Porteur de Projet / Lauréat, le lien avec les autres porteurs de projet, et l'accompagnateur ne se fait pas automatiquement dans le bloc ""Personne et Entreprise Liée"" du porteur de projet.
+Les utilisateurs doivent faire ces liaisons à la main, ce qui est chronophage et redondant avec le renseignement de la fiche Projet.",14
+0019513,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,accepté,résolu,Evolution,2020-08-06,2020-08-28,public,Résultat de recherche et éléments désactivés,"Dossier 137458 Mail de suivi : fmuet@reseau-entreprendre.org
+
+Priorité : moyenne
+
+Sujet de la demande : Détection des doublons si fiche désactivée
+
+Details de la demande : Bonjour,
+
+Lorsque je lance une recherche dans Sigma, par exemple pour savoir si Mme X existe, alors si la fiche de madame X est désactivée elle ne remonte pas dans ma recherche et ne sera pas forcément détecté lorsque je créerait de nouveau sa fiche.
+Cela signifie que nous pouvons donc créer des doublons avec une personne désactivée, ce qui est dommage puisque nous perdons alors l'historique.
+Cela vous semble-t-il normal?
+
+
+cordialement",0
+0019592,C2S - RESEAU ENTREPRENDRE,FREMOND,nchatainier,normale,mineur,toujours,affecté,ouvert,Anomalie,2020-08-27,2020-08-28,public,message bloquant lors de la réactivation d'un pret,"Bonjour, 
+
+je rencontre une problématique bloquante, lorsque je souhaite réactiver un prêt j'ai un message d'erreur.
+
+Voici la démarche : recherche de la personne > prêt > clic en haut à droite sur le bouton activer > message d'erreur cf capture. 
+
+Nous avons plusieurs cas identiques, quelle est la problématique et la solution, merci. ",
+0019589,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,commentaire,ouvert,Evolution,2020-08-27,2020-08-28,public,Modification nomenclature lors des renouvellements d'adhésions,"Bonjour, suite au renommage du RE Seine Estuaire en ""RE Normandie Estuaire""
+Est-t'il possible que les adhésions soient créé avec la nomenclature suivante : FR-NormEstu-XXXX-XXX ?
+
+Merci pour votre retour
+
+François",0.75
+0019563,C2S - RESEAU ENTREPRENDRE,FREMOND,nchatainier,normale,majeur,n'a pas essayé,commentaire,résolu,Support,2020-08-24,2020-08-28,public,Base de données,"Bonjour, 
+
+nous vous mettons en copie l'état de la base de données : 
+-est ce que l'on peut purger les logs ou faut il les conserver ? Tout ou partie ? 
+- Merci de nous fournir un accès à la base de données. 
+
+A votre disposition. ",
+0019529,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Support,2020-08-17,2020-08-28,public,Création d'accès restreint,"Bonjour,
+
+Une collaboratrice nous a posé la question suivante :
+
+Nous avons des consultants qui travaillent avec nous sur des départements délimités, est il possible de leurs ouvrir des droits sur SIGMA en limitant leur accès à leur secteur, par exemple Pyrénées Orientales? Merci pour votre retour.",0
+0019194,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,résolu,résolu,Support,2020-05-29,2020-08-28,public,Edition des échéanciers de prêts (prêts->modele word> echeancier),"Bonjour,
+
+   Nous avons reçu cette demande de M. Rodolphe PASQUIER DESVIGNES :
+
+Il manque une rupture de tableau entre la première et 2e page, le tableau en 2e page recouvre l'entête de page et est donc illisible",1.75
+0019312,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,résolu,résolu,Support,2020-07-01,2020-08-28,public,Problème avec la génération de Convention Booster avec PH,"Bonjour,
+
+   Une personne nous a remonté un soucis avec la génération du modèle Word ""02-Booster Avec PH - Convention d'accompagnement et de PH""
+
+Projet Exemple : REMUE MENAGE.
+
+",3.25
+0019535,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,commentaire,ouvert,Support,2020-08-18,2020-08-28,public,Modifier l'adresse d'une association,"Bonjour,
+
+Afin de modifier l'adresse d'une association pour les modèles de document etc.. Est-ce qu'il faut simplement changer les informations sur la division ?
+
+Merci pour votre retour",
+0019593,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,commentaire,ouvert,Evolution,2020-08-27,2020-08-28,public,Affichage des adresses mails dans liste de comm,"Bonjour,
+Est-il possible de rendre visible les adresses mails des membres qui sont présent une liste de communication ? voir PJ
+
+J'ai la possibilité de voir les adresses mails mais seulement en activant le ""God mod"" via le plugin Dynamics.
+
+Merci pour votre retour",
+0019428,C2S - RESEAU ENTREPRENDRE,FREMOND,nchatainier,urgente,majeur,impossible à reproduire,commentaire,réouvert,Support,2020-07-29,2020-08-26,public,problèmes passerelles,"Nathalie, je crée un ticket au vue de l'urgence de la situation.
+
+Il s’agit de toutes les données au niveau national entre le 17/07 et le 27/07 ( ex : Engagement de prêt, Remboursement, échéancier, …) . 
+
+Est il possible qu’il n’y est pas eu d’opérations de ce fait il n’y pas d’erreur, en revanche le traitement des données via les passerelles entre le 17/07 et le 27/07 n’a pas eu lieu ? 
+
+L’urgence est surtout pour RE_Limousin et RE_Bretagne. 
+J’ai l’impression qu’elles sont de nouveau rebloquées et nous voyons bien qu’il manque les importations du 17 au 27 cf capture. ",35
+0019033,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,élevée,majeur,S/O,accepté,résolu,Support,2020-04-07,2020-08-25,public,Problème de génération modèle Word sur convention,"Lorsqu'elle va générer le modèle word sur sa convention ( 02 - Booster avec PH )
+Dans le plan d'accompagnement, le montant du PH Réseau Entreprendre est à 180 000€ au lieu de 70 000€.
+
+convention ( 02 - Booster avec PH ) : Voir pièce jointe n1
+(vérifié avec le modèle 01-Création- Convention Accompagnement et PH) : Voir pièce jointe n2
+
+Elle souhaite s'assurer qu'il n'y ait pas de soucis de ce type pour les conventions booster/création/reprise etc..",2.5
+0019227,C2S - RESEAU ENTREPRENDRE,LHAMMEL,nchatainier,urgente,bloquant,toujours,résolu,résolu,Support,2020-06-11,2020-08-21,public,Problème avec l'export de la passerelle,"Bonjour, 
+
+Il y a un problème avec l'export pour la passerelle SIGMA -SAGE: 
+Pour les adhésions au titre de l'entreprise, le code tiers de la personne et le code tiers de l'entreprise sont repris ensemble dans le CSV, il faut que seul le code tiers de l'entreprise soit prit, sinon cela bloque ensuite les imports dans SAGE, le logiciel retrouvant un code tiers inexistant. ",10
+0018970,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,majeur,n'a pas essayé,résolu,résolu,Support,2020-03-25,2020-08-21,public,vérification risque LCBFT n'est pas bloquante (0001213),"Bonjour,
+
+Vu en recette: il est actuellement possible de dérouler le parcours projet du début à la fin sans exécuter le contrôle LCBFT.
+
+La non-exécution de ce contrôle est censée être totalement bloquante (c'était au cahier des charges pour cet API) et empêcher le parcours projet de se poursuivre au delà de l'étape 2. Egalement, si le champ ""contrôle LCBFT"" est vide ou a les valeurs A vérifier ou Risque avéré, le passage à l'étape 3 doit être bloqué.
+
+Testé avec la personne John SMITH et son projet associé.
+
+Merci !
+Audrey",7
+0018976,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,résolu,résolu,Support,2020-03-25,2020-08-21,public,"LCBFT : absence de filtre du rapport de recherche sur les statuts OOL, SI, SAN (0001089)","conformément à l'expression de besoins, seuls les résultats de recherche des catégories OOL, SI et SAN doivent être pris en compte dans l'évaluation du risque et dans la liste du pdf résultat de recherche.
+ce n'est aujourd'hui pas le cas, cf le PDF ci-joint
+l'association s'embêtait à chercher comment distinguer son lauréat d'un homonyme de la catégorie PEP qui ne pose pas de problème en matière de LCBFT",3
+0019409,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,commentaire,ouvert,Evolution,2020-07-22,2020-08-21,public,Créer un répertoire Sharepoint pour Le Réseau Entreprendre Loire Vallée,"Bonjour,
+Je ne sais pas si Louis Hammel vous a déjà fait la demande auparavant mais depuis la création du Réseau Entreprendre Loire Vallée, il n'y a pas de répertoire Sharepoint de lié à cette association dans SIGMA. Il n'y a pas d'emplacement défini pour eux lors de la gestion d'un projet par exemple, dans la partie Document.
+
+Pouvez-vous gérer cette création ?
+
+Merci pour votre retour
+
+LEMOINE François",1
+0019060,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,fonctionnalité,S/O,résolu,résolu,Evolution,2020-04-16,2020-08-21,public,Devise de la Cotisation estimée / Module prospect,"Bonjour, dans le module prospect la cotisation estimée est en € par défaut. Il faudrait que chaque pays puisse choisir sa devise.",2
+0019193,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,commentaire,ouvert,Evolution,2020-05-29,2020-08-21,public,Devise Plan de Financement,"Bonjour,
+
+Nous avons reçu cette demande de Dominique DA SILVA :
+
+Merci d'adapter le plan de financement dans Sigma dans la devise du pays. Aujourd'hui le plan de financement est en €uros par défaut.",0.5
+0019382,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,quelques fois,commentaire,ouvert,Evolution,2020-07-16,2020-08-21,public,Création d'un projet SIGMA et liaison Sharepoint,"Bonjour, voici la demande d'une collaboratrice :
+
+Lors de la création d'un nouveau projet, un dossier sharepoint est créé.
+Le nom du dossier est le nom du projet dans sharepoint.
+Il arrive que le nom du projet ne soit pas encore définit ou qu'il change en cours de projet.
+1/ est-ce possible de procéder à un renomage automatique du dossier sharepoint lors d'un changement de nom du projet dans Sigma
+
+2/ si ce n'est pas possible, peut-on changer le nom du dossier dans sharepoint sans engendrer des problèmes dans le lien du dossier sharepoint/Sigma.
+
+Merci",2
+0019525,C2S - RESEAU ENTREPRENDRE,FREMOND,nchatainier,élevée,mineur,S/O,résolu,résolu,Evolution,2020-08-14,2020-08-21,public,Ajout champs Code tiers,"Insertion du Code tiers dans le formulaire de prêt du tiers concerné. cf capture. 
+
+Le but : l'ajout de ce champs permettra au utilisateur d'effectuer une recherche avancée de remboursement + prêt + personne + code tiers .
+",3
+0019515,C2S - RESEAU ENTREPRENDRE,FREMOND,nchatainier,urgente,majeur,toujours,accepté,résolu,Support,2020-08-11,2020-08-20,public,Passerelle SIGMA / SAGE,"le pret du  tiers Fornas Edouard n'est jamais importé dans SAGE depuis la mise en place de la passerelle. 
+RE_provence
+
+Merci de diagnostiquer et de résoudre le problème.",0
+0018973,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Evolution,2020-03-25,2020-08-20,public,Evénement : mise en forme (0001219),"""je participe / je ne participe pas"" : grossir la police de 2 corps + mettre en gras",1
+0018975,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Support,2020-03-25,2020-08-20,public,Création liaison sharepoint sigma nouvelle asso (0001308),"Bonjour Zakaria,
+
+Peux-tu créer la liaison entre sigma et sharepoint pour la nouvelle association Réseau Entreprendre Sarthe stp ? J'ai déjà créé la division etc.
+
+Bien à toi,
+
+Louis",0
+0018938,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Evolution,2020-03-20,2020-08-20,public,Insertion lien ics dans emails invitation (0001260),Le club utilisateurs a validé la demande suivante : Ajouter un lien ics pour permettre aux destinataires de bien enregistrer dans leur agenda les événements auxquels nous les invitons,4.5
+0018940,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Evolution,2020-03-20,2020-08-20,public,choix de l'email expéditeur des invitations événements (0001279),"Les utilisateurs souhaitent pouvoir mettre en expéditeur un autre email que celui de l'utilisateur qui a créé l'événement et l'invitation. Exemples : envoi avec l'email du directeur, du président, l'adresse générique de l'association",0
+0018941,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,élevée,critique,n'a pas essayé,accepté,résolu,Support,2020-03-20,2020-08-20,public,Problème avec la date de début d'échéancier (0001173),"Bonjour,
+
+Une utilisatrice a relevé un bug sur les échéanciers. Lorsqu'elle prépare ses nouveaux dossiers, elle va rentrer la date prévue de 1er versement dans SIGMA, cette date est toujours la même que la date réelle. Cependant, une fois le versement réalisé (et les conventions signées par ailleurs) et qu'elle vient renseigner la date réelle de versement, la date de début de remboursement se décale d'un mois alors que c'est la même que celle prévue... J'ai réussi à reproduire le bug en recette également.
+C'est très gênant pour elle (sûrement pour d'autres également) car elle fait signer ses conventions avec une date de début de remboursement qui change.
+
+Cordialement,
+
+Louis",0
+0018942,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Evolution,2020-03-20,2020-08-20,public,Menu rôle de sécurité Permanent Fédération (0001252),"Bonjour Zakaria,
+
+Le menu sur le rôle de sécurité permanent fédération, n'est pas complet. Peux-tu le mettre identique à celui des permanents asso stp ?
+Aussi, il faudrait que sur ce rôle de sécurité (fédération), les utilisateurs puissent avoir accès à toutes les données dans sigma (prêts, adhésions, etc.)
+
+Merci d'avance,
+
+Louis",0
+0018943,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Support,2020-03-20,2020-08-20,public,Problème sur une vue (0001254),"Bonjour Zakaria,
+
+Une utilisatrice m'a rapporté ce problème :
+""Je rencontre une problème de résultat en créant une vue personnalisé partir du suivi des adhésions, en effectuant exactement la même recherche je ne trouve pas les mêmes donnés que mes collègues.
+
+en exemple ci-joint, la recherche avancé créer à partir de mon compte : Suivi des adhésion - créer une vue personnalisée - recherche d'adhésions - à partir de la vue [nouveau]
+Date de début LE 01-01-18 - Date de fin LE 31-12-18
+Puis, en cliquant sur résultat, je ne trouve que 22 enregistrements.
+
+En passant par le compte de ma collègue Natacha COURAGE, En effectuant la même manipulation (captures ci-joint ) nous trouvons 149 résultats.
+le résultat de Natacha est juste, contrairement au mien.
+
+Peu-être qu'un détail nous a échappé, ou bien y a t'il un problème avec mon compte ? ""
+
+J'ai cherché mais je ne vois pas de problème ni sur sa vue, ni sur son compte ... Ci-joint les captures d'écran qu'elle m'a envoyé avec sa demande.
+
+Bien à toi,
+
+Louis",0
+0019526,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Support,2020-08-14,2020-08-17,public,Questions champs dans SIGMA,"Bonjour,
+
+Une collaboratrice nous a posé la question suivante :
+
+Pouvez-vous nous dire ce qui peut engendrer la modification des champs :
+- 1ère Promotion sur une fiche personne à côté de Lauréat.
+Je pense que cette date ce met en place lorsque nous cochons la case Lauréat, est-ce que les associations peuvent modifier cette date ?
+
+- Informations Date d'entrée / Date de sortie d'un membre.
+Cette collaboratrice s'étonne d'avoir des dates d'entrée et date de sortie, savez d'où ça provient ?
+
+J'ai rajouté des captures en pièce jointe.
+
+Merci
+
+
+
+
+
+",
+0019523,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Support,2020-08-13,2020-08-17,public,Problème de droits entre les associations,"Bonjour,
+
+Voici le retour d'une collaboratrice :
+
+Nous constatons qu'il est possible de modifier les personnes (mails, téléphones,…) des autres associations donc de personnes non rattachées à notre association.
+
+De plus, lorsque nous créons une nouvelle personne les doublons détectés sont ceux de toutes les associations, si nous fusionnons alors nous modifions le contact de l'autre association.
+Est-ce normal? Si oui, il me semble important de rappeler ce fait à toutes les associations pour que nous soyons tous trés trés vigilants.
+",
+0018979,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,commentaire,réouvert,Evolution,2020-03-25,2020-08-14,public,"création sous-statut ""ancien membre"" (0001311)","Hello Zakaria,
+
+Peux-tu ajouter un statut ""Ancien Membre"" ? Il faudrait pour ces personnes pouvoir les filtrer (sous-statut ""ancien membre"") et ne pas les voir apparaître en filtrant sur les autres types de membres.
+
+Pour les anciens membres, il faudrait que la grille date d'entrée/date de sortie reste visible pour eux, pour que l'asso puisse conserver l'historique de la relation avec ce membre.
+
+Merci !
+Audrey",4
+0019240,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,résolu,résolu,Evolution,2020-06-12,2020-08-12,public,Sauvegarde impossible de changement d'accompagnateurs référents sur Sigma,"Bonjour,
+
+   Un collaborateur ne parvient pas à modifier ou retirer l'accompagnateur référent d'un projet.
+Par exemple : Le projet FAUVE Craft Bière
+
+Après enregistrement, il y a un message d'erreur que j'ai mis en pièce jointe.
+Nous avons vérifier ses droits(rôles + Division).
+Egalement côté attribution de la ressource projet.
+
+L'utilisateur en question est Ludovic GIRODON
+
+Merci pour votre retour
+
+Bien cordialement,
+
+LEMOINE François",5
+0019307,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,résolu,résolu,Support,2020-06-30,2020-08-12,public,Ajouter une personne à un projet en tant que Lauréat,"Bonjour,
+
+  Une collaboratrice est bloquée sur l'ajout de M. CURUTCHET Jean-Bernard en tant que Lauréat dans le projet Attila. Elle rencontre le message d'erreur que vous trouverez en pièce jointe.
+
+Merci pour votre retour",2
+0019319,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,élevée,mineur,quelques fois,résolu,résolu,Support,2020-07-03,2020-08-12,public,Ajout d'une personne en tant que Lauréat dans un projet,"Bonjour, une collaboratrice se retrouve bloqué avec un message d'erreur lorsqu'elle tente d'ajouter une personne en tant que lauréat dans un projet ( partie droite en dessous de Porteurs du projet ).
+
+Projet : ATTILA
+Personne : CURUTCHET Jean-Bernard
+
+J'ai tenté de comparer sur d'autre projet et j'ai remarqué que c'était possible.
+La seule chose que j'ai constaté c'est l'acc référent qui était différent sur les autres projets.
+
+Voici le message d'erreur rencontré : 
+ID d'activité : d77c1bba-f960-4b06-86b1-8b179f45731e
+Horodatage : Fri Jul 03 2020 11:32:34 GMT+0200 (heure d’été d’Europe centrale)
+
+J'ai rajouté également le fichier d'erreur !
+
+Merci pour votre aide.
+ ",2
+0019214,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,accepté,résolu,Support,2020-06-08,2020-08-12,public,Mail envoyé dans SIGMA apparaissent dans les messages envoyés d'outlook,"Bonjour,
+
+    M. Olivier DECLERCK nous a remonté que depuis mai, les mails envoyés depuis SIGMA était également présent dans le dossier des mails envoyés sur le client Outlook. Je pensais qu'il s'agissait d'un fonctionnement normalement mais apparemment ça ne le faisait pas avant.
+Savez-vous si il est possible de bloquer ce mode de fonctionnement pour une personne ?
+
+Merci d'avance pour votre retour,
+
+Bien cordialement,
+
+LEMOINE François",2
+0019302,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,aléatoire,affecté,réouvert,Support,2020-06-29,2020-08-12,public,Problème de création d'adhésion,"Bonjour,
+
+  J'ai une utilisatrice qui rencontre régulièrement un message d'erreur lors de la création d'une adhésion ( voir pièce jointe ). Savez vous pourquoi et comment pouvons nous solutionner le soucis ?
+
+Merci pour votre retour.",2
+0018980,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,résolu,résolu,Support,2020-03-25,2020-08-11,public,Abandon de côtisation ne fait plus perdre le statut Membre (0001294),"Hello Zakaria,
+
+Quand on abandonne une côtisation, la Personne ne perd plus automatiquement son statut Membre: la case statut reste bleutée, seul le texte (membre actif) disparaît.
+
+Testé avec RE Rhône sur MENOU frédéric et MARCADE paul.
+Testé sur une fiche lambda: l'abandon de côtisation fonctionne et le statut Membre disparaît.
+
+Pourrais-tu jeter un oeil s'il te plaît ?
+
+Merci :)
+Audrey",3.5
+0019126,C2S - RESEAU ENTREPRENDRE,FCHABBI,nchatainier,élevée,majeur,n'a pas essayé,résolu,résolu,Evolution,2020-05-05,2020-08-11,public,Désactivation d'un projet,"Lors d’une liquidation judiciaire ou d’une cessation d’activité, il est important de pouvoir désactiver un projet parce qu’il n’est plus actif. Toutefois, la détermination de  la cause de l’arrêt est tout aussi important pour les statistiques de pérennité des entreprises. 
+
+Aussi, pourriez-vous rajouter dans les options de désactivation du projet les options suivantes : 
+
+-	Cessation d’activité 
+-	Liquidation judiciaire 
+
+Voici les choix possibles à ce jour pour désactiver un projet  : 
+-	Apport insuffisant 
+-	Choix d’un autre accompagnement 
+-	Intérêt unique pour le prêt 
+-	Perspective d’emplois créés/ maintenus 
+-	N’est pas actionnaire majoritaire 
+-	Zone géographique 
+-	Type d’activité 
+-	Stade de l’idée 
+-	CA insuffisant 
+-	Nb d’emplois insuffisant 
+-	Arrêt de l’étude 
+-	Avis défavorable CE 
+-	Abandon des candidats 
+-	Accompagnement individuel et ou collectif terminé 
+-	Exclusion 
+-	Convention / prêt d’honneur sans objet 
+-	Créé par erreur 
+",2
+0019399,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Support,2020-07-21,2020-08-07,public,Excédent début période : Cellule Bloquée,"Bonjour, voici le besoin rencontré :
+
+Dans un projet :
+Besoin d'avoir ce champ libre si jamais une entreprise a déjà eu 1 année d'exercice. ( Solde trésorerie ).
+
+Quelles sont les conditions pour que ce champ soit accessible normalement ?
+
+Merci pour votre retour.
+",
+0019333,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,commentaire,ouvert,Support,2020-07-07,2020-08-07,public,Erreur lors du lancement de l'analyse de risque LCB-FT sur un projet,"Bonjour,
+Sur le projet ""LES FRUITS DÉTENDUS"" lors du lancement de l'analyse de risque (en phase 2) nous obtenons des messages d'erreur bien que les dossiers Sharepoint soient bien créés et accessibles. Généralement cela est du aux caractères spéciaux dans les noms des projets mais en renommant le projet et en exécutant le Workflow on ne voit pas apparaître de nouveau dossier Sharepoint.
+Est-il possible de supprimer les liens existant dans Sigma vers Sharepoint pour un projet afin de le renommer ensuite et d'exécuter à nouveau le workflow de création de dossier Sharepoint ? existe-il une autre solution pour exécuter le risque sur ce projet ?
+En pièce jointe les captures d'écran du message d'erreur qui apparaît lors de l'exécution de l'analyse du risque.
+Merci par avance pour votre retour.",1
+0019514,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,commentaire,ouvert,Support,2020-08-06,2020-08-07,public,Modification des événements – Mis à jour non automatique,"Dossier 137460
+
+Mail de suivi : fmuet@reseau-entreprendre.org
+
+Priorité : moyenne
+
+Sujet de la demande : Modification des événements – Mis à jour non automatique
+
+Details de la demande : Bonjour,
+
+Lorsque nous modifions un événement (ex : la participation ou la durée) les mises à jour ne se font pas automatiquement.
+
+Pour la participation, nous devons depuis la fiche projet actualiser les cellules de comptage en haut à droite de la fiche projet.
+Pour le suivi des heures, en cas de modification de la durée de l'événement nous devons aller dans la base suivi des heures de bénévolat pour modifier à la main le nombre d'heure de bénévolat pour chaque personne
+
+
+
+cordialement,",
+0019512,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,majeur,toujours,affecté,ouvert,Support,2020-08-06,2020-08-07,public,Sigma ne fait pas le lien entre un événement et un projet,"
+Dossier 137457
+
+Type de demande :Demande de service Fanny MUET
+
+Mail de suivi : fmuet@reseau-entreprendre.org
+
+Priorité : moyenne
+
+Sujet de la demande : Lien projet – événement
+
+Détails de la demande : Bonjour,
+
+Nous constatons que dans la base ""suivi des heures de bénévolat"" Sigma ne fait pas le lien entre un événement et un projet. Notamment pour les comités. Nous créons un événement ""comité du projet X"", dans la fiche projet du porjetX nous relions l'événement au projet mais ensuite dans la base suivi des heures de bénévolat la participation à l'événement n'est pas rattachée à un projet.
+
+si mon mail n'est pas clair vous pouvez m'appeler au 06 64 66 32 52, je serai en congé du 6 Août au 17 Août donc merci de m'appeler avant ou après ces dates",
+0019504,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Support,2020-08-06,2020-08-06,public,Call point de situation 05/08/2020,Call point de situation 05/08/2020,2
+0019026,C2S - RESEAU ENTREPRENDRE,LHAMMEL,nchatainier,basse,cosmétique,toujours,commentaire,ouvert,Support,2020-04-06,2020-08-05,public,Problème d'affiche sur la recherche avancée [pas urgent],"Bonjour Nathalie, 
+
+Depuis quelques temps j'ai un problème d'affiche sur la recherche avancée, impossible de retrouver l'affichage normal. Sais-tu comment je peux le retrouver ? Ce n'est pas urgent, j'arrive quand même à l'utiliser mais pas très pratique donc à voir quand il y a du temps :)
+
+Louis",
+0019106,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Support,2020-04-24,2020-07-28,public,Call Besoin Outlook-SIGMA,Call Besoin Outlook-SIGMA avec Sophie BARRA DUPRESSOIR,1
+0019140,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,accepté,résolu,Support,2020-05-12,2020-07-28,public,"Call Point sur Environnements (bac sa sable, recette)","Call Point sur Environnements (bac sa sable, recette) avec Faten",0.5
+0019205,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,accepté,résolu,Support,2020-06-03,2020-07-28,public,Majuscule sur le prénom,"Bonjour,
+
+   Une utilisatrice nous a remonté un soucis que nous ne parvenons pas à résoudre pour la personne : CAMPS Jean-Michel dans SIGMA.
+Il est impossible de rajouter une majuscule sur son prénom composé (M de Michel)
+
+Merci pour votre retour,
+
+Bien cordialement,
+
+LEMOINE François",2
+0019197,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,S/O,accepté,résolu,Support,2020-05-29,2020-07-28,public,Résoudre les doublons,"Bonjour,
+
+   Je me permet de vous contacter pour savoir comment gérer au mieux les doublons ? Est-ce qu'il existe une manipulation simple permettant de supprimer les doublons et rassembler toutes les informations dans une personne ?
+
+Merci d'avance pour votre retour,
+
+Bien cordialement,
+
+LEMOINE François",2
+0019136,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,urgente,mineur,toujours,accepté,résolu,Evolution,2020-05-11,2020-07-28,public,Date à modifier dans un Modèle,"Bonjour, nous avons reçu une demande concernant la suppression de la date présente en pied de page du modèle : E90-15-Echeancier PH-180122 SIGMA.docx
+
+Vous trouverez en pièce jointe la capture du pied de page.
+
+N'hésitez pas à revenir vers moi pour plus d'information.",5
+0019225,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,urgente,majeur,toujours,accepté,résolu,Support,2020-06-10,2020-07-28,public,Pas d'envoi d'email depuis les événements dans SIGMA,"Bonjour,
+
+Seuls les emails de test partent depûis hier dans les événements Sigma, les emails d'invitation (invités) ne partent plus.
+
+Merci pour votre aide.
+
+Cordialement.
+
+Claude BEGGIATO",2.5
+0019316,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,résolu,résolu,Support,2020-07-02,2020-07-27,public,Problème Génération 01_Note du comité d'engagement,Une collaboratrice viens de sortir un autre document word (note de comité) sur un projet (PIERRE D’OPALE) le prêt CT n’apparait plus ! Le plan de financement faux. C’est un élément essentiel et contractuel de la décision du Comité d’Engagement.,1.5
+0019412,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,commentaire,ouvert,Evolution,2020-07-23,2020-07-27,public,Recherche dans une vue,"Bonjour,
+
+Plusieurs personnes ont remonté le soucis suivant :
+
+Lorsqu'une recherche est effectuée par exemple dans le menu personne. Si une vue est sélectionnée au préalable, elle n'est plus prise en compte après utilisation de la recherche.
+
+J'ai fais également le test avec une vue projet inactif que vous trouverez en pièce jointe.
+
+Est-ce qu'il est possible de lier la recherche à la vue ?
+
+Merci pour votre retour.
+
+LEMOINE François
+
+",
+0019130,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,élevée,mineur,toujours,résolu,résolu,Support,2020-05-07,2020-06-26,public,Problème d'affichage Sandbox Recette SIGMA,"Bonjour, Dominique DA SILVA et Juliette Ronfard rencontrent des soucis d'accès à l'environnement de recette SIGMA.
+En effet, en utilisant le lien cité en dessous, l'interface n'est pas complète, aucun moyen d'accéder aux menus etc.. 
+Nous avons testé en navigation privée avec un autre compte et ça fonctionne normalement.
+
+J'ai regardé dans la partie console d'administration, et il est précisé qu'aucun n'accès particulier n'a été mis en place, tout le monde peut y accéder.
+
+
+
+",2.5
+0019291,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,affecté,ouvert,Evolution,2020-06-26,2020-06-26,public,Déclenchement du statut membre lorsqu'un don est saisi,"Bonjour,
+Nous avons été contacté par Mme Alix DUNOYER du RE Nord (adunoyer@reseau-entreprendre.org) qui a constaté que depuis l'ajout du statut membre donateur dans Sigma, lorsqu'un don est saisi pour une personne, le statut de cette personne ne passe pas automatiquement sur ""membre donateur"".
+Merci par avance pour votre aide concernant cette demande.
+Bonne journée,
+--
+Claude BEGGIATO",
+0018955,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Evolution,2020-03-24,2020-06-25,public,modification / personnalisation des emails automatiques SIGMA (0001157),"Est-il possible de créer nous-mêmes des modèles mails qui sont envoyés automatiquement par SIGMA lors d'une mise en relation (accompagnement AMONT)?
+Le mail ne convient pas à tous les utilisateurs. Est-il possible d'avoir une base de mails type pré enregistrés, réalisé par l'utilisateur, pour ces actions",0.25
+0018956,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Evolution,2020-03-24,2020-06-25,public,architecture dossiers SharePoint SIGMA (0001156),"Est-il possible de changer / personnaliser la nomenclature des dossiers SharePoint créés automatiquement par SIGMA ?
+Si cela n'est pas possible, est-il seulement possible de créer un dossier intermédiaire dans projet afin que les dossiers ""projet"" soient trié par année ? Voir par permanent en plus pour les plus grosses assoc' ?
+La demande est issue d'un utilisateur qui s'exerce à n'utiliser que SIGMA dans l'accompagnement AMONT & AVAL : il crée à partir d'outook le projet et la personne, ce qui génère un dossier (projet) automatiquement sur son ordi, avec sharepoint, la synchro se fait assez bien, et il n'a plus qu'à suivre les étapes de suivi comme il se doit apres...",2
+0019070,C2S - RESEAU ENTREPRENDRE,FCHABBI,nchatainier,élevée,majeur,n'a pas essayé,commentaire,ouvert,Support,2020-04-21,2020-06-25,public,Accès Implantation Sigma pour Walloni,"En exportant les fichiers personnes dans Sigma pour Wallonie, on ne peut pas affecter les implantations pour les divers utilisateurs. Les DT sont bloqués.
+L'accès est fermé pour attribuer les implantations pour la Wallonie
+",0.25
+0019131,C2S - RESEAU ENTREPRENDRE,SupportOmconseil,nchatainier,normale,mineur,toujours,affecté,ouvert,Evolution,2020-05-07,2020-06-25,public,Création d'une nouvelle personne dans SIGMA,"Bonjour, nous avons reçu une demande de Dominique Da Silva concernant le champ par défaut ""Pays"" lors de la création d'une personne.
+
+Est-il possible de retirer ça ? Dans le meilleur des cas, je pense qu'ils souhaiteraient avoir le champ par défaut lié au profil qui créer la nouvelle personne.
+
+Merci pour votre retour
+
+Cordialement
+
+François",
+0018983,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Support,2020-03-25,2020-06-24,public,Evenement HelloAsso redescend dans la mauvaise division (0001284),"Hello Zakaria,
+
+Il y a un souci avec certains événements créés dans HelloAsso, qui redescendent bien dans SIGMA mais pas pour la bonne division.
+
+Marine Pascal de RE Loire a créé vendredi un événement (Soirée 1er de cordée, créée le 11/10) qui dans un premier temps n'est pas redescendu. Quand je vais dans SIGMA, il redescend bien, mais est rattaché à l'utilisateur reseauentreprendrefede... et non à RE Loire
+Je te mets en PJ des captures d'écran de la liste des événements qui retombent pour le compte fédé alors que pour certains ça ne devrait pas être le cas (Provence, sur la seconde capture d'écran: on voit bien le nom de l'asso dans l'URL du lien HelloAsso).
+
+Est-ce que tu pourrais regarder à quoi c'est dû et corriger ?
+Est-ce que la retombée de l'évé dans la mauvaise division peut perturber la collecte des réponses des invités ? (dans le cas où on réattribue l'évé à son utilisateur originel) ?
+
+Merci pour ton aide !
+Audrey",0
+0019008,C2S - RESEAU ENTREPRENDRE,LHAMMEL,nchatainier,normale,mineur,S/O,commentaire,ouvert,Evolution,2020-03-30,2020-06-24,public,Modification champs nombre d'années de garantie,"Bonjour, 
+
+Comment passer le champs ""Nombre d'années de garantie"" (ser_nombredanneesdegarantie) de l'entité prêt en nombre décimal ? 
+
+Merci d'avance, 
+
+Louis",
+0019250,C2S - RESEAU ENTREPRENDRE,LHAMMEL,nchatainier,immédiate,bloquant,quelques fois,commentaire,ouvert,Support,2020-06-16,2020-06-24,public,Report des prêts,"Bonjour, 
+Suite à la modification des plugins, un bug se présente quelques fois : 
+lorsque les échéances sont reportées, le montant ne se met pas à 0 alors qu'il le devrait. Par exemple sur celui-ci : Prêt BALLADE Gérald / Les Triporteurs Malouins 
+<https://reseauentreprendre.crm4.dynamics.com/main.aspx?etc=10087&extraqs=formid%3d87390678-aa39-4bc8-aef6-abf37f94837f&id=%7b7A2E7F12-0F4D-4E3A-9C4E-6F72B8B468EA%7d&pagetype=entityrecord>
+",0.75
+0019216,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Support,2020-06-08,2020-06-08,public,Modification du plugin de report,Modification du plugin de report,2
+0018988,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Support,2020-03-26,2020-06-08,public,[SAGE] Paramètrage SQL / Déploiement nouvelles asso,Déploiement nouvelles asso,8
+0018974,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,commentaire,réouvert,Support,2020-03-25,2020-05-12,public,calcul heures de bénévolat (0001274),"Maxime ALAY-EDDINE a participé à 2 CE, mais aucune heure de bénévolat n'a été décomptée pour cela.
+La participation de membres aux événements donne lieu à décompte d'heures de bénévolat, à l'exception des événements type ""conviviale""",2
+0018966,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,résolu,résolu,Evolution,2020-03-25,2020-04-17,public,Adaptations International : traductions espagnoles demandées sur le module Evenements (0001108),"Traduction à apporter sur les liens de participation :
+Je participe : Participo
+Je ne participe pas : No Participo
+
+Modification et traduction à apporter sur la page web réponse à la participation aux évènements :
+
+Modifier le logo Réseau Entreprendre par : Netmentora
+
+Dans le cas d’acceptation :
+Muchas gracias.
+Te esperamos.
+
+Dans le cas de non acceptation :
+Muchas gracias!
+Será en otra oportunidad.",5
+0018982,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Support,2020-03-25,2020-03-25,public,Evenements : pbs d'enregistrement de participation (0001166),"Rappel du problème évoqué jeudi en complément de mon mail du 05/06/2019 : Olivier DECLERCK <odeclerck@reseau-entreprendre.org> a écrit: On a toujours ce problème lors de l'envoi d'invitation à plus de 250 personnes.
+Exemple, l'événement REN Running du 5 juin 2019. 886 invités. envoi de l'invitation par paquets de 250.
+pour certains destinataires, toujours les mêmes, ils apparaissent avec le statut = participe alors qu'ils n'ont cliqué aucun lien. Difficile donc de se fier aux réponses !
+
+Infos complémentaires : les réponses positives a priori non liées à la volonté d'un invité (selon leurs dires, leur manque d'intérêt pour le sujet, leur indisponibilité...) concernent a priori toujours les mêmes, et les réponses arrivent tout de suite après l'envoi. L'utilisateur émet donc l'hypothèse que les liens soient ""activés"" par un robot, anti-virus ou autre programme automatique testant les liens. Ils ont constaté sur un autre outil de routage que certains invités se trouvaient dans l'outil de tracking comme ayant cliqué sur 2 liens contradictoires en même temps.
+Pouvez-vous vous renseigner ?
+
+Par ailleurs, je lui ai dit que nous avions besoin de cas très précis pour identifier et corriger l'eventuel problème : il va faire un nouvel envoi prochainement et va nous remonter précisément ces cas ""bizarres"".",0
+0018981,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Support,2020-03-25,2020-03-25,public,Impossible d'envoyer des emails en masse (0001165),"Bug rapporté par Olivier DECLERCK :
+""Impossible de créer un envoi d'emails en masse.
+Tous les champs obligatoires sont renseignés.
+Au moment d'enregistrer l'email, message d'erreur = erreur du processus d'entreprise""",0
+0018978,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Evolution,2020-03-25,2020-03-25,public,récupération automatiques des dates de 1ere promotion lauréats (0001269),"Super que les dates de première promotion puisse être modifiées pour les lauréats… mais très chronophages à faire pour 500 boites (donc près de 900 personnes…).
+
+Les dates de CE étant renseignées sur SIGMA, serait-il possible de faire passer un script pour que les dates de première promotion des lauréates reprennent la date de CE ?
+
+Je pense que toutes les asso sont concernées par cela. Cela serait super et nous ferait gagner un temps fou + une info précieuse sur chaque personne,",0
+0018939,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,normale,mineur,n'a pas essayé,affecté,ouvert,Evolution,2020-03-20,2020-03-24,public,Evolution evenements (0001228),"Les utilisateurs souhaiteraient avoir, sur chaque événement, un dossier rassemblent tous les emails relatifs à l'événement. Ces dossiers viendraient en complément de la bibliothèque de modèles qui rassemble les emails qui ont vocation à reservir.
+Pour chaque événement, l'utilisateur mettrait dans le dossier les emails envoyés avec le module gestion des événements : invitations, confirmation, relance, informations pratiques, remerciements,
+
+Par ailleurs, compte-tenu des limites de mise en page, routage & tracking du système actuel avec Outlook, nous voudrions re-étudier l'interfaçage avec Click Dimension. 2 membres du Club utilisateurs sont prêts à travailler sur le sujet. POurrait-on envisager une présentation de l'outil, et éventuellement de l'interface qui avait été développée et rejetée à l'époque par les utilisateurs ?",0
+0018937,C2S - RESEAU ENTREPRENDRE,nchatainier,nchatainier,basse,mineur,n'a pas essayé,affecté,ouvert,Evolution,2020-03-20,2020-03-24,public,"Paramétrage : connexions tables Suivi des participations & Listes de comm, voire projets (0001233)","Un utilisateur demande à pouvoir calculer les taux de participation globaux de ses communautés aux clubs.
+Pour cela il faudrait, dans la table ""ajouter des colonnes"" du suivi des participations / suivi des clubs, ajouter l'item liste de comm, voire projets, cf image en PJ",0

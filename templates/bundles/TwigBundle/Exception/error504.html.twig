@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 504 {% endblock %}
+
+{% block body %}
+    <br>
+    <h1>Erreur 504</h1>
+    <br>
+    <h3>Le serveur n'a pas répondu </h3>
+    <br>
+    <button type="button" class="btn btn-outline-primary" onclick="document.location.href='{{path('ticket')}}';" >Retour à l'accueil</button><br><br>
+{% endblock %}

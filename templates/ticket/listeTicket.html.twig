@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{#Tout les filtres#}
+  <h1> Liste des tickets ( {{listeAffichage | length }} )  </h1>
+  <div class="container">
+    {{form_start(form)}}
+    <label>Nom du prestataire</label>
+    <select name="nomPresta">
+      <option value="tout"> Tous </option>
+      {% for p in presta %} 
+          <option> {{p.nom }} </option>
+      {% endfor %}
+    </select>
+    <label>Priorité </label>
+    <select name="priorite">
+      <option value="tout"> Tous </option>
+      {% for p in priorite %} 
+          <option> {{p.priorite }} </option>
+      {% endfor %}
+    </select>
+    <label>Impact </label>
+    <select name="impact">
+      <option value="tout"> Tous </option>
+      {% for p in impact %} 
+          <option> {{p.impact }} </option>
+      {% endfor %}
+    </select>
+    <label>Resolution </label>
+    <select name="resolution">
+      <option value="tout"> Tous </option>
+      {% for p in resolution %} 
+          <option> {{p.resolution }} </option>
+      {% endfor %}
+    </select>
+    <label>Etat </label>
+    <select name="etat">
+      <option value="tout"> Tous </option>
+      {% for p in etat %} 
+          <option> {{p.etat }} </option>
+      {% endfor %}
+    </select>
+    {{form_widget(form.Envoyer)}}
+    <input type="submit" class="btn btn-success" value ="Valider les modifs" name="btnModif" >
+    {{form_end(form)}}
+  </div><br><br>
+
+  <table class="table table-striped table-bordered">
+    {# Parcours des colonnes du presta#}
+    <thead>
+      <tr>
+        <th> Prestataire </th>
+        <th> Mise a jour </th>
+        {% for c in colonneTable %}
+          <th scope="col">{{c.COLUMN_NAME}}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+    {# Parcours des donnéees des tickets#}
+    {% for n in nvxTickets %}
+        <tr>
+          <td><a href= "http://127.0.0.1:8000/ticket/{{n.id}}" style="color:#0000FF"> {{ n.type }} </a></td>
+          <td style="background-color:#33FFFF">{{n.mise_a_jour}}</td>
+          {% for c in colonneTable %}
+                    <td scope="col">{{n[c.COLUMN_NAME]}}</td>
+          {% endfor %}
+        </tr>
+    {% endfor %}
+    {% for a in listeAffichage %}
+      {% for t in traitement %}
+        {% if a.type != "regroup" %}
+          {% if a.traitement_id == t.id %}
+              <tr>
+                <td><a href= "http://127.0.0.1:8000/ticket/{{a.traitement_id}}" style="color: #0000FF"> {{ a.type }} </a></td>
+                {% if a.mise_a_jour == t.mise_a_jour %}
+                    <td> {{ a.mise_a_jour }} </td>
+                {% else %}
+                    <td style="background-color:#00FF00">{{a.mise_a_jour}}</td>
+                {% endif %}
+                {% for c in colonneTable %}
+                    <td scope="col">{{a[c.COLUMN_NAME]}}</td>
+                {% endfor %}
+              </tr>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    </tbody>
+    </table>
+    {% endblock %}

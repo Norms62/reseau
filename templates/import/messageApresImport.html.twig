@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Import {% endblock %}
+
+{% block body %}
+    {% if tableExist == false %}
+        <h1> Votre fichier a été chargé , il s'agit de la première importation pour le presta {{presta}}  </h1>
+        <h3><a href="http://127.0.0.1:8000/liaison/{{presta}}/oui"> Choisir les colonnes à utiliser   </h3>
+    {% else %}
+        <h1> Votre fichier a été chargé  Souhaitez vous Choisir les données à insérer dans la table {{presta}}  </h1>
+        <h3><a href="http://127.0.0.1:8000/liaison/{{presta}}/oui"> Oui je veux changer </h3>
+        <h3> <a href="http://127.0.0.1:8000/liaison/{{presta}}/non"> NON ne pas changer </h3>
+    {% endif %}
+{% endblock %}

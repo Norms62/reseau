@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 500 {% endblock %}
+
+{% block body %}
+    <br>
+    <h1>Erreur 500</h1>
+    <br>
+    <h3>Erreur au niveau du serveur </h3>
+    <br>
+    <button type="button" class="btn btn-outline-primary" onclick="document.location.href='{{path('ticket')}}';" >Retour à l'accueil</button><br><br>
+{% endblock %}

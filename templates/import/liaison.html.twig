@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Import {% endblock %}
+
+{% block body %}
+    <h1> Voici toutes les colonnes du presta {{presta}} , vous pouvez les assimiler avec celle du CSV  </h1>
+    {{form_start(form) }}
+
+    {% for c in colonnePresta %}
+        <div class="mb-3">
+            <h2><label  class="col-sm-2 col-form-label"> {{ c.COLUMN_NAME }}  </label>
+            <select  name='{{ c.COLUMN_NAME }}'>
+                <option value=""> Ne pas utiliser </option></h2>
+                {% for p in colonneCSV %}
+                    <h2><option >{{ p.COLUMN_NAME }}</option></h2>
+                {% endfor %}
+            </select>
+        </div>
+    {% endfor %}
+    {{form_widget(form.Envoyer)}}
+    {{form_end(form)}}
+{% endblock %}

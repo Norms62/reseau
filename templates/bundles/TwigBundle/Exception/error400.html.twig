@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 400 {% endblock %}
+
+{% block body %}
+
+    <br>
+    <h1>Erreur 400</h1>
+    <br>
+    <h3> La syntaxe de la requête est erronée </h3>
+    <br>
+    <button type="button" class="btn btn-outline-primary" onclick="document.location.href='{{path('ticket')}}';" >Retour à l'accueil</button><br><br>
+
+{% endblock %}

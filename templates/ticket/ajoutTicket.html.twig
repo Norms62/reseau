@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1> Ajout d'un ticket </h1>
+
+{{form_start(form)}}
+{% for c in colonne %}
+    <label>{{c.COLUMN_NAME}}</label>
+    <input class="form-control" type="text" size="80" name={{c.COLUMN_NAME}}  />
+    <br />
+{% endfor %}
+{{form_end(form)}}
+
+{% endblock %}

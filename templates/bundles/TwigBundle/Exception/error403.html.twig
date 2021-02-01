@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 403 {% endblock %}
+
+{% block body %}
+    <br>
+    <h1>Erreur 403</h1>
+    <br>
+    <h3> Vous n'êtes pas autorisé à naviguer sur cette page </h3>
+    <br>
+    <button type="button" class="btn btn-outline-primary" onclick="document.location.href='{{path('ticket')}}';" >Retour à l'accueil</button><br><br>
+
+{% endblock %}

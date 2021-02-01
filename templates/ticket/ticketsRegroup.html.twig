@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste Tickets Regroupés </h1>
+    {# Parcours des colonnes du presta#}
+    {% for t in ticketsRegroup %}
+    <table class="table table-striped table-bordered">
+        <thead>
+            <h2><center>Tickets Regroupés numéro {{t.id}}</center></h2>
+            <tr>
+                <th> Prestataire </th>
+                <th> Mise a jour </th>
+                {% for c in colonneTable %}
+                    <th >{{c.COLUMN_NAME}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        {# Parcours des données du presta#}
+        <tbody>
+            {% for t in tab[t.id] %}
+                {% for donnees in t %}
+                    <tr>
+                        <td>{{donnees.type}} </td>
+                        <td>{{donnees.mise_a_jour}} </td>
+                        {% for c in colonneTable %}
+                            <td> {{donnees[c.COLUMN_NAME]}} </th>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur {% endblock %}
+
+{% block body %}
+
+    <br>
+    <h1>Erreur</h1>
+    <br>
+    <h3> Oups ! Il s'emblerait qu'il y ait une erreur non identifiée </h3>
+    <br>
+    <button type="button" class="btn btn-outline-primary" onclick="document.location.href='{{path('ticket')}}';" >Retour à l'accueil</button><br><br>
+
+{% endblock %}

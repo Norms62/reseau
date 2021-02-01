@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 413 {% endblock %}
+
+{% block body %}
+    <br>
+    <h1>Erreur 413</h1>
+    <br>
+    <h3>Le traitement a été abandoné dû à une requête trop importante </h3>
+    <br>
+    <button type="button" class="btn btn-outline-primary" onclick="document.location.href='{{path('ticket')}}';" >Retour à l'accueil</button><br><br>
+{% endblock %}

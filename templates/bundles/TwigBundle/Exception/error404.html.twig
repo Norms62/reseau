@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 404 {% endblock %}
+
+{% block body %}
+    <br>
+    <h1>Erreur 404</h1>
+    <br>
+    <h3> La page que vous cherchez n'a pas été trouvée </h3>
+    <br>
+    <button type="button" class="btn btn-outline-primary" onclick="document.location.href='{{path('ticket')}}';" >Retour à l'accueil</button><br><br>
+{% endblock %}
