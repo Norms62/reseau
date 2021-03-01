@@ -34,6 +34,7 @@
         "symfony/twig-bundle": "^4.4",
         "symfony/validator": "4.4.*",
         "symfony/web-link": "4.4.*",
+        "symfony/web-server-bundle": "4.4.*",
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "4.4.*",
         "twbs/bootstrap": "4.5.3",
@@ -49,8 +50,7 @@
         "symfony/phpunit-bridge": "^5.1",
         "symfony/stopwatch": "^4.4",
         "symfony/var-dumper": "^4.4",
-        "symfony/web-profiler-bundle": "^4.4",
-        "symfony/web-server-bundle": "4.4.*"
+        "symfony/web-profiler-bundle": "^4.4"
     },
     "config": {
         "preferred-install": {

@@ -30,7 +30,7 @@ class IndexController extends AbstractController
         $conn = $manager->getConnection();
         $selectPresta= $conn->query("SELECT * from prestataire ")->fetchAll();
         $cp= 0;
-        // On parcourt tout les presta pour les stocker dans des variables
+        // Parcourt tout les presta pour les stocker dans des variables
         // Ex : liste1 = Tout les tickets Masao , nomPresta1 = masao
         // cp = nombre de presta
         foreach($selectPresta as $unPresta){
@@ -40,7 +40,7 @@ class IndexController extends AbstractController
             ${'nomPresta'.$cp} = $nomBase;
         }
         // On parcourt les tickets d'un presta à la fois, puis on compare la ref avec les tickets des autres presta 
-        // Limit permet de parcourir tout les autres presta
+        // Limit permet de parcourir tout les autres presta (presta1 -> compare ref avec presta 2 et 3 // Presta 2 -> compare ref avec presta 3)
         for ($i=1; $i<=$cp ; $i++) { 
             foreach (${'liste'.$i} as $ticket1){
                 $limit = $i+1;
@@ -53,12 +53,6 @@ class IndexController extends AbstractController
                 // Insertion de chaque ticket dans traitement
                 $this->insertTraitement($ticket1,${'nomPresta'.$i},$manager);
             }
-        }
-        //Insertion des tickets regroup dans traitement
-        $conn = $manager->getConnection();
-        $listeTicketsRegroup =  $conn->query("SELECT * from tickets_regroup ")->fetchAll();    
-        foreach($listeTicketsRegroup as $unTicketRegroup) {
-            $this->insertTraitement($unTicketRegroup , 'regroup' , $manager);
         }
         
     }
@@ -165,9 +159,8 @@ class IndexController extends AbstractController
             $cp=0;
             foreach($ticketsAffichage as $ticketAffichage){
                 // S'il y est, on le modifie
-                if($ticketAffichage['ref'] == $t['ref'] && $ticketAffichage['type'] == $t['type']) {
-                    //$this->modifTraitementVersAffichage($t , $ticketAffichage , $manager);
-                    $cp=1;
+                if($ticketAffichage['ref'] == $t['ref'] && $ticketAffichage['type'] == $t['type'] ) {
+                        $cp=1;
                 }
             }
             // Si non, on l'insère dans la base
@@ -208,9 +201,15 @@ class IndexController extends AbstractController
     public function modifUnTraitement($traitement,$colonne,EntityManagerInterface $manager){
         // Modification de un traitement
         $conn = $manager->getConnection();
+        $selectType = $conn->query("SELECT type from traitement where id=".$traitement['id'])->fetch();
+        $selectIdPresta = $conn->query("SELECT id from ".$selectType['type']." where id =".$traitement['ticket_'.$selectType['type']])->fetch();
+
         foreach($colonne as $c){
             $updateTraitement = $conn->query('UPDATE traitement set '.$c['COLUMN_NAME'].' = "'.$traitement[$c['COLUMN_NAME']].'" where id ='.$traitement['id']);
             $updateAffichage = $conn->query('UPDATE affichage set '.$c['COLUMN_NAME'].' = "'.$traitement[$c['COLUMN_NAME']].'" where traitement_id ='.$traitement['id']);
+            if($c['COLUMN_NAME'] != 'commentaire' and $c['COLUMN_NAME'] != 'action'){
+                $updatePresta = $conn->query('UPDATE '.$selectType['type'].' set '.$c['COLUMN_NAME'].' = "'.$traitement[$c['COLUMN_NAME']].'" where id ='.$selectIdPresta['id']);
+            }
         }
     }
 

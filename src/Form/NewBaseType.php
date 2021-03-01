@@ -16,7 +16,7 @@ class NewBaseType extends AbstractType
             ->add('nomBase',TextType::class , [
                 'label' => 'Nom du nouveau prestataire',
             ])
-            ->add('Ajout', submitType::class)
+            ->add('Ajout', submitType::class ,  ['attr' => ['class' =>  'btn btn-info']])
             ;
     }
 

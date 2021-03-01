@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attention{% endblock %}
+
+{% block body %}
+<center>
+    <h1  style="color : #F4B82A ; font-weight : bold">Attention , vous avez {{nbErreur | length}} tickets qui comportent plus de données que de colonnes</h1><br><br>
+</center>
+    <form method="post">
+        <p><input class="btn btn-outline-primary btn-lg btn-block" type="submit" value="Insérer les données sans les erreurs" name="btnInserer" /></p><br>
+        <input type="hidden" value={{presta}} name="presta">
+    </form>
+    <button type="button" class="btn btn-outline-secondary btn-lg btn-block" onclick="document.location.href='{{path('import')}}';" >Retour sur la page importation</button><br><br>
+     
+<h1  style="color : #F4B82A ; font-weight : bold">Ci dessous les identifiants des tickets avec les erreurs</h1><br><br>
+{% for n in nbErreur %}
+    <h1> {{n}} -- {{presta}} </h1>
+{% endfor %}
+{% endblock %}

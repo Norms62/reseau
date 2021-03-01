@@ -30,7 +30,6 @@ class TicketController extends IndexController
      */
     public function listeTicket(EntityManagerInterface $manager, Request $request)
     {   
-        // Au départ affiche tout les tickets
         // Formulaire des filtres
         $test = array();
         $form = $this -> createForm(BoutonType::class , $test);
@@ -51,16 +50,17 @@ class TicketController extends IndexController
 
         //Infos qui servira au filtre
         $presta = $conn     ->query("SELECT * FROM prestataire ")->fetchAll();
-        $priorite=$conn     ->query("SELECT DISTINCT(priorite) from affichage");
-        $impact = $conn     ->query("SELECT DISTINCT(impact) from affichage");
-        $etat = $conn       ->query("SELECT DISTINCT(etat) from affichage");
-        $resolution = $conn ->query("SELECT DISTINCT(resolution) from affichage");
+        $priorite=$conn     ->query("SELECT DISTINCT(priorite) from affichage where priorite != '' ");
+        $impact = $conn     ->query("SELECT DISTINCT(impact) from affichage where impact != '' ");
+        $etat = $conn       ->query("SELECT DISTINCT(etat) from affichage where etat != ''");
+        $resolution = $conn ->query("SELECT DISTINCT(resolution) from affichage where resolution != ''");
 
         //Si on valide les mise a jour, le traitement va vers affichage
         if(isset($_POST["btnModif"])) {
             $this->modifTraitementVersAffichage($traitement , $affichage,$colonne, $manager);
             $this->insertAffichage($manager);
             $this->gestionGlobal($manager);
+            return $this->redirectToRoute('ticket');
         }
 
         //Permet de filtrer selon les infos demandées
@@ -91,6 +91,7 @@ class TicketController extends IndexController
             if($filtre_resolution != "tout"){
                 $affichage = $affichage." AND resolution='$filtre_resolution'";
             }
+            // Puis on éxécute la requete
             $affichage = $affichage." order by mise_a_jour desc";
             $affichage= $conn->query($affichage)->fetchAll();
 
@@ -148,7 +149,13 @@ class TicketController extends IndexController
                 $idPresta=$conn->query("SELECT ticket_".$nomPresta['type']." FROM traitement where id=$id ")->fetch();
                 $suppAffichage=$conn->query("DELETE FROM affichage WHERE traitement_id=$id");
                 $suppTraitement=$conn->query("DELETE FROM traitement where id=$id");
+                //Suppression dans tickets regroupés.  
+                $ticketR = $conn->query("SELECT count(id) as nb , id from tickets_regroup where ".$nomPresta['type']."_id = ".$idPresta["ticket_".$nomPresta['type']])->fetch();
+                if($ticketR['nb'] == 1 ){
+                    $supprimer = $conn->query("DELETE from tickets_regroup where id=".$ticketR['id']);
+                }
                 $suppPresta=$conn->query("DELETE FROM ".$nomPresta['type']." WHERE id=".$idPresta["ticket_".$nomPresta['type']]);
+                
             }
             else{
                 $suppAffichage=$conn->query("DELETE FROM affichage WHERE traitement_id=$id");
@@ -160,13 +167,13 @@ class TicketController extends IndexController
         // Une fois validé, on modifie ce ticket puis on affiche la liste des tickets
         if($form->isSubmitted()){
             if(!isset($_POST["btnSupp"])) {
-            $conn = $manager->getConnection(); 
-            foreach($colonne as $c){
-                $update = $conn->query('UPDATE traitement set '.$c['COLUMN_NAME'].' = "'.$_POST[$c['COLUMN_NAME']].'" where id='.$id);
-            }
-            $DonneesTraitement= $conn->query("SELECT * FROM traitement WHERE id=$id")->fetch();
-            $this->modifUnTraitement($DonneesTraitement,$colonne,$manager);
-            return $this->redirectToRoute('ticket');
+                $conn = $manager->getConnection(); 
+                foreach($colonne as $c){
+                    $update = $conn->query('UPDATE traitement set '.$c['COLUMN_NAME'].' = "'.$_POST[$c['COLUMN_NAME']].'" where id='.$id);
+                }
+                $DonneesTraitement= $conn->query("SELECT * FROM traitement WHERE id=$id")->fetch();
+                $this->modifUnTraitement($DonneesTraitement,$colonne,$manager);
+                return $this->redirectToRoute('ticket');
             }
         }
 
@@ -182,17 +189,17 @@ class TicketController extends IndexController
      */
     public function listeTicketsRegroup(Request $request, EntityManagerInterface $manager){
         //Selection de tous les tickets Regroups
-        $tab='';
+        $tab[]='';
         $conn = $manager->getConnection(); 
         $selectTicketsRegroups = $conn->query("SELECT * FROM tickets_regroup")->fetchAll();
         //Selection de tous les prestas
         $selectPresta = $conn->query("SELECT * FROM prestataire")->fetchAll();
         foreach($selectTicketsRegroups as $ticketsRegroups){
-            //Si le ticket est lié a un presta on le stock dans un tableau nommé tab['id du ticket regroupé']['id du ticket prestataire']
+            //Si le ticket est lié a un presta on le stock dans un tableau nommé tab['id du ticket regroupé']['nom prestataire']
             foreach($selectPresta as $presta){
                 if($ticketsRegroups[$presta['nom'].'_id'] != ''){
                     $ticket=$conn->query("SELECT * from traitement where ticket_".$presta['nom']."=".$ticketsRegroups[$presta['nom'].'_id'])->fetchAll();
-                    $tab[$ticketsRegroups['id']][$ticketsRegroups[$presta['nom'].'_id']]=$ticket;
+                    $tab[$ticketsRegroups['id']][$presta['nom'].'_id']=$ticket;
                 }
             }
         }
@@ -221,15 +228,17 @@ class TicketController extends IndexController
         if($form->isSubmitted()){
             $nomUtilisateur= $user->getPrenom();
             $date = new \DateTime();
-            $date = $date->format('d-m-Y');
+            $date = $date->format('Y-m-d');
             //On insère la premiere ligne puis on update
             $conn = $manager->getConnection(); 
             $insertTraitement=$conn->query("INSERT INTO traitement (type) values ('".$nomUtilisateur."') ");
             $idTraitement = $conn->lastInsertId();
             foreach($colonne as $c){
-                    $updateTraitement=$conn->query("UPDATE traitement set ".$c['COLUMN_NAME']." = '".$_POST[$c['COLUMN_NAME']]."' where id=".$idTraitement);
+                    $valeur = \str_replace("\"" , " " ,$_POST[$c['COLUMN_NAME']]);
+                    $updateTraitement=$conn->query('UPDATE traitement set '.$c['COLUMN_NAME'].' = "'.$valeur.'" where id='.$idTraitement);
             }
-            $updateMiseAJour = $conn->query("UPDATE traitement set mise_a_jour='".$date."' where id=".$idTraitement);
+            $updateMiseAJour = $conn->query('UPDATE traitement set mise_a_jour="'.$date.'" where id='.$idTraitement);
+            $updateRef = $conn -> query('UPDATE traitement set ref = "'.$nomUtilisateur.$idTraitement.'"where id='.$idTraitement);
             $this->insertAffichage($manager);
             return $this->redirectToRoute('ticket');
         }

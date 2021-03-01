@@ -2,88 +2,100 @@
 
 {% block body %}
 {#Tout les filtres#}
-  <h1> Liste des tickets ( {{listeAffichage | length }} )  </h1>
+  <h1  style="color : #F4B82A ; font-weight : bold"> Liste des tickets ( {{listeAffichage | length }} )  </h1>
   <div class="container">
     {{form_start(form)}}
-    <label>Nom du prestataire</label>
-    <select name="nomPresta">
+    <label style="font-weight : bold">Nom du prestataire</label>
+    <select style="border-color : #59C3B5 ; padding:5px "name="nomPresta">
       <option value="tout"> Tous </option>
       {% for p in presta %} 
           <option> {{p.nom }} </option>
       {% endfor %}
     </select>
-    <label>Priorité </label>
-    <select name="priorite">
+    <label style="font-weight : bold">Priorité </label>
+    <select style="border-color : #59C3B5 ; padding:5px "name="priorite">
       <option value="tout"> Tous </option>
       {% for p in priorite %} 
           <option> {{p.priorite }} </option>
       {% endfor %}
     </select>
-    <label>Impact </label>
-    <select name="impact">
+    <label style="font-weight : bold">Impact </label>
+    <select style="border-color : #59C3B5 ; padding:5px"name="impact">
       <option value="tout"> Tous </option>
       {% for p in impact %} 
           <option> {{p.impact }} </option>
       {% endfor %}
     </select>
-    <label>Resolution </label>
-    <select name="resolution">
+    <label  style="font-weight : bold"> Resolution </label>
+    <select style="border-color : #59C3B5 ; padding:5px"name="resolution">
       <option value="tout"> Tous </option>
       {% for p in resolution %} 
           <option> {{p.resolution }} </option>
       {% endfor %}
     </select>
-    <label>Etat </label>
-    <select name="etat">
-      <option value="tout"> Tous </option>
+    <label style="font-weight : bold">Etat </label>
+    <select style="border-color : #59C3B5 ; padding:5px" name="etat">
+      <option style="color : red " value="tout"> Tous </option>
       {% for p in etat %} 
           <option> {{p.etat }} </option>
       {% endfor %}
     </select>
     {{form_widget(form.Envoyer)}}
-    <input type="submit" class="btn btn-success" value ="Valider les modifs" name="btnModif" >
-    {{form_end(form)}}
   </div><br><br>
 
   <table class="table table-striped table-bordered">
     {# Parcours des colonnes du presta#}
-    <thead>
+    <thead >
       <tr>
-        <th> Prestataire </th>
-        <th> Mise a jour </th>
+      <th style="vertical-align : middle ; border : 1px solid grey" class="text-center"> ID </th>
+        <th style="vertical-align : middle ; border : 1px solid grey" class="text-center"> Prestataire </th>
+        <th style="vertical-align : middle ; border : 1px solid grey" class="text-center"> 
+          <input type="submit" class="btn btn-info" value ="Valider" name="btnModif" >
+          {{form_end(form)}}
+          Mise a jour 
+        </th>
         {% for c in colonneTable %}
-          <th scope="col">{{c.COLUMN_NAME}}</th>
+          <th style="vertical-align : middle ; border : 1px solid grey" class="text-center" scope="col">{{c.COLUMN_NAME}}</th>
         {% endfor %}
       </tr>
     </thead>
     <tbody>
-    {# Parcours des donnéees des tickets#}
+    {# Parcours des nouveaux tickets#}
     {% for n in nvxTickets %}
         <tr>
-          <td><a href= "http://127.0.0.1:8000/ticket/{{n.id}}" style="color:#0000FF"> {{ n.type }} </a></td>
-          <td style="background-color:#33FFFF">{{n.mise_a_jour}}</td>
+          <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ n.id }} </td>
+          <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">
+            <a href= "http://127.0.0.1:8000/ticket/{{n.id}}" style="color:#0000FF"> {{ n.type }} </a></td>
+          <td style="background-color:#33FFFF ; vertical-align : middle ; border : 1px solid grey">{{n.mise_a_jour}}</td>
           {% for c in colonneTable %}
-                    <td scope="col">{{n[c.COLUMN_NAME]}}</td>
+                    <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">{{n[c.COLUMN_NAME]}}</td>
           {% endfor %}
         </tr>
     {% endfor %}
+    {# Parcours des tickets déja présent dans traitement et affichage #}
     {% for a in listeAffichage %}
       {% for t in traitement %}
-        {% if a.type != "regroup" %}
           {% if a.traitement_id == t.id %}
               <tr>
-                <td><a href= "http://127.0.0.1:8000/ticket/{{a.traitement_id}}" style="color: #0000FF"> {{ a.type }} </a></td>
+                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.id }} </td>
+                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">
+                  <a href= "http://127.0.0.1:8000/ticket/{{a.traitement_id}}" style="color: #0000FF"> {{ a.type }} </a></td>
                 {% if a.mise_a_jour == t.mise_a_jour %}
-                    <td> {{ a.mise_a_jour }} </td>
+                    <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.mise_a_jour|date('d/m/Y') }} </td>
                 {% else %}
-                    <td style="background-color:#00FF00">{{a.mise_a_jour}}</td>
+                    <td style="background-color:#00FF00 ; border : 1px solid grey">{{a.mise_a_jour|date('d/m/Y')}}</td>
                 {% endif %}
                 {% for c in colonneTable %}
-                    <td scope="col">{{a[c.COLUMN_NAME]}}</td>
+                    {% if c.COLUMN_NAME == 'date_soumission'%}
+                      <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.date_soumission|date('d/m/Y') }} </td>
+                    {% elseif a[c.COLUMN_NAME] !=  t[c.COLUMN_NAME] %}
+                      <td style="background-color:#00FF00 ; vertical-align : middle ; border : 1px solid grey" class="text-center">{{a[c.COLUMN_NAME]}}</td>
+                    {% else %}
+                      <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">{{a[c.COLUMN_NAME]}}</td>
+                    {% endif %}
                 {% endfor %}
               </tr>
           {% endif %}
-        {% endif %}
       {% endfor %}
     {% endfor %}
     </tbody>

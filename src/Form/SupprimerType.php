@@ -12,9 +12,7 @@ class SupprimerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Supprimer ', submitType::class, [
-                'label' => 'Supprimer',
-            ])
+            ->add('Supprimer ', submitType::class,  ['attr' => ['class' =>  'btn btn-info']])
         ;
     }
 

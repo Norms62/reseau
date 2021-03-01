@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques{% endblock %}
+
+{% block body %}
+<h1  style="color : #F4B82A ; font-weight : bold">Statistiques</h1>
+{# Table sur nb et temps des tickets selon le mois #}
+
+<p class="w-auto mt-2 p-2" style="color : #F4B82A  ; font-size : 25px ; font-weight : bold" > Nombre et temps des tickets par mois</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th style="vertical-align : middle ; border : 1px solid black" class="text-center">Mois </th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Jan</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Fev</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Mars</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Avril</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Mai</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Juin</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Juil</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Aout</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Sept</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Oct</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Nov</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Dec</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Nombre de ticket </th>
+            {% for t in tabNbTicket %}
+                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{t}} </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Temps des tickets </th>
+            {% for t in tabTempsTotal %}
+                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{t}} </td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+
+{# Table sur nb et temps des tickets selon le prestataire #}
+<p class="w-auto mt-2 p-2" style="color : #F4B82A ; font-size : 25px ; font-weight : bold" > Nombre et temps des tickets par prestataire et selon la résolution</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th style="vertical-align : middle ; border : 1px solid black" class="text-center"> Prestataire </th>
+            {% for p in presta %}
+                {% for r in resolution %}
+                    <th style=" vertical-align : middle ;border : 1px solid black" class="text-center">{{p.nom}} -> {{r.resolution}}</th>
+                {% endfor %}
+            {% endfor %}
+        <tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th style=" vertical-align : middle ; border : 1px solid black" class="text-center"> Nombre de tickets </th>
+                {% for p in presta %}
+                    {% for r in resolution %}
+                        <td style="vertical-align : middle ; border : 1px solid black" class="text-center">{{tabNbPrestaResolution[r.resolution][p.nom]}}</td>
+                    {% endfor %}
+                {% endfor %}
+        </tr>
+        <tr>
+            <th style="verticak-align : middle ; border : 1px solid black" class="text-center"> Temps des tickets (h) </th>
+            {% for p in presta %}
+                {% for r in resolution %}
+                    <td style="vertical-align : middle ; border : 1px solid black" class="text-center">{{tabTempsPrestaResolution[r.resolution][p.nom]}}</td>
+                {% endfor %}
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+
+{# Table sur nb ticket selon les impact , priorité et résolution #}
+<p class="w-auto mt-2 p-2" style="color : #F4B82A ; font-size : 25px ; font-weight : bold" > Nombre et temps des tickets par priorité et impact selon la résolution</p>
+<table class="table table-striped table-bordered">
+    
+    <thead>
+        <tr>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Résolution </th>
+            {% for p in priorite %}
+                <th style="vertical-align : middle;border : 1px solid black" class="text-center"> priorité {{p.priorite}} </th>
+            {% endfor %}
+            {% for i in impact %}
+                <th style="vertical-align : middle;border : 1px solid black" class="text-center"> impact {{i.impact}}
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in resolution %}
+            <tr>
+                <th style="vertical-align : middle;border : 1px solid black" class="text-center"> {{r.resolution}} </th>
+                {% for p in priorite %}
+                    <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{ tabPrioriteResolution[r.resolution][p.priorite]}} </td>
+                {% endfor %}
+                {% for i in impact %}
+                    <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{ tabImpactResolution[r.resolution][i.impact]}} </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{# Table sur nb ticket du jour #}
+<p class="w-auto mt-2 p-2" style="color : #F4B82A ; font-size : 25px ; font-weight : bold" > Nombre et temps des tickets selon la date du jour</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Nombre de ticket aujourd'hui </th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Nombre de ticket hier </th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Nombre de ticket cette semaine </th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Nombre de ticket ce mois
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for t in ticketDuJour %}
+                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{t.nbTicket }}</td>
+            {% endfor %}
+            {% for t in ticketHier %}
+                <td style="vertical-align : middle;border : 1px solid black " class="text-center"> {{t.nbTicket }}</td>
+            {% endfor %}
+            {% for t in ticketSemaine %}
+                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{t.nbTicket}} </td>
+            {% endfor %}
+            {% for t in ticketMois %}
+                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{t.nbTicket}} </td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

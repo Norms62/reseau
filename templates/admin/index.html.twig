@@ -4,15 +4,17 @@
 
 {% block body %}
 <center>
-    <h1>Page Admin</h1><br><br>
+    <h1  style="color : #F4B82A ; font-weight : bold">Page Admin</h1><br><br>
 </center>
 
     <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="document.location.href='{{path('newBase')}}';" >Ajouter un prestataire</button><br><br>
     <button type="button" class="btn btn-outline-secondary btn-lg btn-block" onclick="document.location.href='{{path('inscription')}}';" >Ajouter un utilisateur</button><br><br>
     <button type="button" class="btn btn-outline-success btn-lg btn-block" onclick="document.location.href='{{path('ajoutColonne')}}';" >Ajouter une colonne</button><br><br>
     <button type="button" class="btn btn-outline-danger btn-lg btn-block" onclick="document.location.href='{{path('suppColonne')}}';" >Supprimer une colonne</button><br><br>
-    <button type="button" class="btn btn-outline-warning btn-lg btn-block" onclick="document.location.href='{{path('listeBase')}}';" >Liste des bases</button><br><br>
-    <button type="button" class="btn btn-outline-info btn-lg btn-block" onclick="document.location.href='{{path('listeUtilisateurs')}}';" >Liste des utilisateurs</button><br>
-    
+    <button type="button" class="btn btn-outline-warning btn-lg btn-block" onclick="document.location.href='{{path('listeBase')}}';" >Liste des prestataires</button><br><br>
+    <button type="button" class="btn btn-outline-info btn-lg btn-block" onclick="document.location.href='{{path('listeUtilisateurs')}}';" >Liste des utilisateurs</button><br><br>
+    <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="document.location.href='{{path('erreur_donnees')}}';" >Gestion des erreurs de données</button><br><br>
+    <button type="button" class="btn btn-outline-success btn-lg btn-block" onclick="document.location.href='{{path('supp_ticket')}}';" >Supprimer plusieurs tickets</button><br><br>
+
     
 {% endblock %}

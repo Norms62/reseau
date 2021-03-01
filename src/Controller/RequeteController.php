@@ -26,28 +26,26 @@ class RequeteController extends AbstractController
         // Formulaire qui demande juste le nom de la new base
         $form = $this->createForm(NewBaseType::class);
         $form -> handleRequest($request);
+        // Toutes les colonnes d'un presta
+        $conn = $manager->getConnection();
+        $colonne = $conn->query("SELECT COLUMN_NAME  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'traitement' 
+                                and COLUMN_NAME not in ('id','type','date_creation','date_soumission','mise_a_jour','nb_ticket_regroup','ref','action', 'commentaire')
+                                and COLUMN_NAME not like ('ticket%')")->fetchAll();
         // Une fois validé, on créer cette base
         if($form->isSubmitted()){
             $data = $form->getData();
             $nomBase = $data['nomBase'];
-            $conn = $manager->ge0Connection();
             $newBase= $conn->query('CREATE TABLE '.$nomBase.'
             (
                 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
                 date_creation VARCHAR(255),
                 ref VARCHAR(255),
                 date_soumission VARCHAR(255),
-                mise_a_jour VARCHAR(255),
-                rapporteur VARCHAR(255),
-                resume VARCHAR(2000),
-                description VARCHAR(2000),
-                temps VARCHAR(255),
-                priorite VARCHAR(255),
-                impact VARCHAR(255),
-                etat VARCHAR(255),
-                resolution VARCHAR(255),
-                categorie VARCHAR(255)
+                mise_a_jour VARCHAR(255)
             )ENGINE = InnoDB');
+            foreach($colonne as $c){
+                $ajoutColonne = $conn->query("ALTER TABLE $nomBase ADD ".$c['COLUMN_NAME']. " varchar(255)");
+            }
             // Ajout des clés étrangères dans traitement et tickets_regroup
             $newColonne = $conn ->query(
                 'ALTER TABLE tickets_regroup ADD '.$nomBase.'_id INT ');
@@ -82,9 +80,7 @@ class RequeteController extends AbstractController
     public function listeBase(Request $request, EntityManagerInterface $manager) {
         // Affichage de toute les bases. Date_création permet de voir juste les tables du site
         $conn = $manager->getConnection();
-        $select= $conn->query("SELECT COLUMN_NAME, TABLE_NAME as nomTable
-                               FROM INFORMATION_SCHEMA.COLUMNS 
-                               WHERE COLUMN_NAME LIKE 'date_creation' ")->fetchAll();
+        $select= $conn->query("SELECT nom as nomTable from prestataire ")->fetchAll();
 
         return $this->render('requete/listeBase.html.twig', [
             'controller_name' => 'RequeteController',

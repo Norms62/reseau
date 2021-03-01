@@ -4,11 +4,30 @@
 
 {% block body %}
     {% if tableExist == false %}
-        <h1> Votre fichier a été chargé , il s'agit de la première importation pour le presta {{presta}}  </h1>
+        <h1> Votre fichier a été importé , il s'agit de la première importation pour le presta {{presta}}  </h1>
         <h3><a href="http://127.0.0.1:8000/liaison/{{presta}}/oui"> Choisir les colonnes à utiliser   </h3>
     {% else %}
-        <h1> Votre fichier a été chargé  Souhaitez vous Choisir les données à insérer dans la table {{presta}}  </h1>
-        <h3><a href="http://127.0.0.1:8000/liaison/{{presta}}/oui"> Oui je veux changer </h3>
-        <h3> <a href="http://127.0.0.1:8000/liaison/{{presta}}/non"> NON ne pas changer </h3>
+        <h1> Votre fichier a été importé. Ci-dessous, un rappel des laisons entre les colonnes de {{presta}} et du csv  </h1>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th> Colonne {{presta}} </th>
+                    <th> Colonne Csv </th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for c in colonnePrestaCsv %}
+                    <tr>
+                        <td> {{c.colonnePresta}} </td>
+                        <td> {{c.colonneCSV}} </td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+        <h1> Souhaitez vous modifier ces liaisons ? </h1>
+        <button type="button" class="btn btn-info btn-lg" onclick="document.location.href='http://127.0.0.1:8000/liaison/{{presta}}/oui';" >OUI</button>
+        <button type="button" class="btn btn-warning btn-lg" onclick="document.location.href='http://127.0.0.1:8000/liaison/{{presta}}/non';" >NON</button>
     {% endif %}
 {% endblock %}

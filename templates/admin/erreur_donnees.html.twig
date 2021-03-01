@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreurs données{% endblock %}
+
+{% block body %}
+<center>
+    <h1  style="color : #F4B82A ; font-weight : bold">Gestion des erreurs de données</h1><br><br>
+</center>
+{# Erreur sur le temps#}
+{% if erreurTemps[0] != 0 or tempsTropLong[0] != 0  %}
+    <h2 style="color : #F4B82A ; font-weight : bold"> Erreur sur le temps</h2>
+    {% if erreurTemps[0] != 0  %}
+        <h3> {{erreurTemps | length}} tickets dont le temps n'est pas numérique  ---> 
+        {% for e in erreurTemps %}
+        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+    {% if tempsTropLong[0] != 0 %}
+        <h3> {{tempsTropLong | length}} tickets dont le temps parait trop élevé ---> 
+        {% for e in tempsTropLong %}
+        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+{% endif %}
+<br><br>
+
+{# Erreur sur les priorités#}
+{% if erreurPriorite[0] != 0 or prioriteTropLongue[0] != 0 %}
+    <h2 style="color : #F4B82A ; font-weight : bold"> Erreur sur les priorités</h2>
+    {% if erreurPriorite[0] != 0  %}
+        <h3> {{erreurPriorite | length }} tickets dont la priorité est numérique ---> 
+        {% for e in erreurPriorite %}
+        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+    {% if prioriteTropLongue[0] !=  0 %}
+        <h3> {{prioriteTropLongue | length }} tickets dont la priorité semble incorrecte car la longueur de chaine est trop grande --->
+        {% for p in prioriteTropLongue %}
+        <a href= "http://127.0.0.1:8000/ticket/{{p}}" style="color: #0000FF"> {{ p }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+{% endif %}
+
+{# Erreur sur l'impact#}
+{% if erreurImpact[0] != 0 or impactTropLong[0] != 0 %}
+    <h2 style="color : #F4B82A ; font-weight : bold"> Erreur sur les impacts</h2>
+    {% if erreurImpact[0] != 0  %}
+        <h3> {{erreurImpact | length}} tickets dont l'impact est numérique  ---> 
+        {% for e in erreurImpact %}
+        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+    {% if impactTropLong[0] != 0 %}
+        <h3> {{impactTropLong | length}} tickets dont l'impact semble incorrecte car la longueur de chaine est trop grande ---> 
+        {% for e in impactTropLong %}
+        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+{% endif %}
+
+{# Erreur sur les résolutions #}
+{% if erreurResolution[0] != 0 or ResolutionTropLongue[0] != 0 %}
+    <h2 style="color : #F4B82A ; font-weight : bold"> Erreur sur les résolution</h2>
+    {% if erreurResolution[0] != 0  %}
+        <h3> {{erreurResolution | length}} tickets dont la résolution est numérique  ---> 
+        {% for e in erreurResolution %}
+        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+    {% if ResolutionTropLongue[0] != 0 %}
+        <h3> {{ResolutionTropLongue | length}} tickets dont la résolution semble incorrecte car la longueur de chaine est trop grande ---> 
+        {% for e in ResolutionTropLongue %}
+        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+{% endif %}
+
+{# Erreur sur les états #}
+{% if erreurEtat[0] != 0 or EtatTropLong[0] != 0 %}
+    <h2 style="color : #F4B82A ; font-weight : bold"> Erreur sur les états</h2>
+    {% if erreurEtat[0] != 0  %}
+        <h3> {{erreurEtat | length}} tickets dont l'état est numérique  ---> 
+        {% for e in erreurEtat %}
+        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+    {% if EtatTropLong[0] != 0 %}
+        <h3> {{EtatTropLong | length}} tickets dont l'état semble incorrecte car la longueur de chaine est trop grande ---> 
+        {% for e in EtatTropLong %}
+        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+{% endif %}
+
+{# Erreur sur les résumés #}
+{% if erreurResume[0] != 0 %}
+    <h2 style="color : #F4B82A ; font-weight : bold"> Erreur sur les résumés</h2>
+    {% if erreurResume[0] != 0  %}
+        <h3> {{erreurResume | length}} tickets dont le résumé semble incorrecte car la longueur de chaine est trop grande ---> 
+        {% for e in erreurResume %}
+        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        {% endfor %}
+        </h3>
+    {% endif %}
+{% endif %}
+
+{% endblock %}

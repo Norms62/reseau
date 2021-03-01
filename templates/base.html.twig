@@ -6,39 +6,43 @@
         {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav  style ="height:100px ; background-color: #59C3B5" class="navbar navbar-expand-lg">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% if app.user %}
             <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{path('ticket')}}">Tickets</a>
+                <a style="color:white ; font-size : 25px ; padding : 25px" class="nav-link" href="{{path('ticket')}}">Tickets</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{path('tickets_regroup')}}">Tickets Regroupés</a>
+                <a style="color:white ; font-size : 25px ; padding : 25px" class="nav-link" href="{{path('tickets_regroup')}}">Tickets Regroupés</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{path('ajoutTicket')}}">Ajouter un ticket</a>
+                <a style="color:white ; font-size : 25px ;padding : 25px" class="nav-link" href="{{path('ajoutTicket')}}">Ajouter un ticket</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{path('import')}}">Import fichier </a>
+                <a style="color:white ; font-size : 25px ; padding : 25px" class="nav-link" href="{{path('import')}}">Import fichier </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{path('statistiques')}}"> Statistiques </a>
+                <a style="color:white ; font-size : 25px ; padding : 25px" class="nav-link" href="{{path('statistiques')}}"> Statistiques </a>
             </li>
+            {% endif %}
             {% if is_granted('ROLE_ADMIN') %}
             <li class="nav-item">
-                <a class="nav-link" href="{{path('admin')}}">Page Admin </a>
+                <a style="color:white ; font-size : 25px ; padding : 25px" class="nav-link" href="{{path('admin')}}">Page Admin </a>
             </li>
             {% endif %}
             </ul>
+            <ul style="position:absolute ; right:0" class="navbar-nav mr-auto">
             {% if not app.user %}
             <li class="nav-item">
-                <a class="nav-link" href="{{path('connexion')}}">Connexion</a>
+                <a style="color:white ; font-size : 25px ; padding : 25px" class="nav-link" href="{{path('connexion')}}">Connexion</a>
             </li>
             {% else %}
             <li class="nav-item ">
-                <a class="nav-link" href="{{path('deconnexion')}}">Deconnexion</a>
+                <a style="color:white ; font-size : 25px ; padding : 25px " class="nav-link" href="{{path('deconnexion')}}">Deconnexion</a>
             </li>
             {% endif %}
+            </ul>
         </div>
     </nav>
         {% block body %}{% endblock %}

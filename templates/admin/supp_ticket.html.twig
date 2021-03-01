@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer tickets{% endblock %}
+
+{% block body %}
+
+<h1  style="color : #F4B82A ; font-weight : bold">Suppression de plusieurs tickets</h1><br><br>
+    {{form_start(form)}}
+    <label style="font-size : 22px ;font-weight : bold">Supprimer tous les tickets d'un prestataire</label><br>
+    <select style="border-color : #59C3B5 ; padding:5px "name="nomPresta">
+      <option value="non">  </option>
+      {% for p in presta %} 
+          <option> {{p.nom }} </option>
+      {% endfor %}
+    </select><br><br>
+    <label style="font-size : 22px ;font-weight : bold">Supprimer les tickets selon une résolution </label><br>
+    <select style="border-color : #59C3B5 ; padding:5px " name="resolution">
+      <option value="non">  </option>
+      {% for r in resolution %} 
+          <option> {{r.resolution }} </option>
+      {% endfor %}
+    </select><br><br>
+    <label style="font-size : 22px ;font-weight : bold">Supprimer les tickets datant plus de :  </label><br>
+    <select style="border-color : #59C3B5 ; padding:5px " name="mois">
+      <option value="non">  </option>
+          <option value="1"> 1 mois  </option>
+          <option value="2"> 2 mois  </option>
+          <option value="3"> 3 mois  </option>
+          <option value="4"> 4 mois  </option>
+          <option value="5"> 5 mois  </option>
+          <option value="6"> 6 mois  </option>
+          <option value="7"> 7 mois  </option>
+          <option value="8"> 8 mois  </option>
+          <option value="9"> 9 mois  </option>
+          <option value="10"> 10 mois  </option>
+          <option value="11"> 11 mois  </option>
+          <option value="12"> 1 an  </option>
+    </select><br><br>
+    {{form_widget(form.Envoyer)}}
+{% endblock %}

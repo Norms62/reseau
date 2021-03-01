@@ -13,7 +13,7 @@ class BoutonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('Envoyer', SubmitType::class)
+        ->add('Envoyer', SubmitType::class , ['attr' => ['class' =>  'btn btn-info']])
         ;
     }
 

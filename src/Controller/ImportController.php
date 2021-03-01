@@ -29,33 +29,14 @@ class ImportController extends IndexController
      * @Route("/import" , name="import")
      */
     public function import(Request $request, EntityManagerInterface $manager){
-        //Voir si la table intermédiaire existe
-        //Return false si la table n'existe pas
-        $conn = $manager->getConnection();
-        $selectInter = $conn->query("SELECT  TABLE_NAME
-        FROM INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='intermediaire' ")->fetch();
-        if($selectInter != false ){
-            $suppTable = $conn->query("DROP TABLE intermediaire");
-        }
         
-        // Affiche le formulaire pour faire l'importation
-        $upload = new Upload();
-        $form = $this->createForm(UploadType::class , $upload);  
-        $form -> handleRequest($request);
-        // Une fois validé, on génère le fichier pour le mettre dans un dossier upload 
-        // Puis on insère les données du fichier dans une table intermédiaire (baseIntermédiaire(csv))
-        if($form->isSubmitted() && $form-> isValid()) {
-            $file = $upload->getNom();  
-            $presta = $upload->getPresta();
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move($this->getParameter('upload_directory'), $fileName);
-            $upload -> setNom($fileName);
-            $chemin = $this->getParameter('upload_directory').'/'.$fileName;
-            $csv = Reader::createFromPath($chemin , 'r');   
-            $this->baseIntermediaire($csv , $manager);
+        // Si on tombe sur la page d'erreur et on choisi d'insérer tout de même les données : 
+        if(isset($_POST["btnInserer"])) {
+            $conn = $manager->getConnection();
+            $presta = $_POST['presta'];
+            $ColonnePrestaCsv = $conn->query("SELECT * from csv_$presta")->fetchAll();
             // csv_presta permet de mémoriser les colonnes du csv que l'on souhaite garder
             // Si cette table n'existe pas , TableExist = false (Cela changera l'affichage)
-            $conn = $manager->getConnection();
             $selectTouteLesTables= $conn->query("   SELECT COLUMN_NAME, TABLE_NAME as nomTable
                                                     FROM INFORMATION_SCHEMA.COLUMNS 
                                                     WHERE COLUMN_NAME LIKE 'date_creation' ")->fetchAll();
@@ -65,17 +46,81 @@ class ImportController extends IndexController
                     $tableExist = true ;
                 }
             }
-
-            
             return $this->render('import/messageApresImport.html.twig',[
                 'presta' => $presta,
-                'tableExist' => $tableExist
+                'tableExist' => $tableExist,
+                'colonnePrestaCsv'=>$ColonnePrestaCsv,
             ]);
-            
         }
-        return $this->render('ticket/import.html.twig',[
-            'form' => $form->createView()
-        ]);
+
+        //Voir si la table intermédiaire existe
+        //Return false si la table n'existe pas
+        $conn = $manager->getConnection();
+        $selectInter = $conn->query("SELECT  TABLE_NAME
+        FROM INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='intermediaire' ")->fetch();
+        if($selectInter != false ){
+            $suppTable = $conn->query("DROP TABLE intermediaire");
+        }
+        // Affiche le formulaire pour faire l'importation
+        $upload = new Upload();
+        $form = $this->createForm(UploadType::class , $upload);  
+        $form -> handleRequest($request);
+
+        // Une fois validé, on génère le fichier pour le mettre dans un dossier upload 
+        // Puis on insère les données du fichier dans une table intermédiaire (baseIntermédiaire(csv))
+        if($form->isSubmitted() && $form-> isValid()) {
+            $file = $upload->getNom();  
+            $presta = $upload->getPresta();;
+            $presta = $presta->getNom();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directory'), $fileName);
+            $upload -> setNom($fileName);
+            $chemin = $this->getParameter('upload_directory').'/'.$fileName;
+            $csv = Reader::createFromPath($chemin , 'r');   
+            $nbErreur=$this->baseIntermediaire($csv , $manager);
+            //Suppression du fichier dans upload 
+            \unlink($chemin);
+            if(count($nbErreur)>0 && $nbErreur[0] != 0 ) {
+                return $this->render('import/ErreurInfoTicket.html.twig',[
+                    'nbErreur' => $nbErreur,
+                    'presta' => $presta
+                ]);
+            }
+            else{
+                // csv_presta permet de mémoriser les colonnes du csv que l'on souhaite garder
+                // Si cette table n'existe pas , TableExist = false (Cela changera l'affichage)
+                $conn = $manager->getConnection();
+                $selectTouteLesTables= $conn->query("   SELECT COLUMN_NAME, TABLE_NAME as nomTable
+                                                        FROM INFORMATION_SCHEMA.COLUMNS 
+                                                        WHERE COLUMN_NAME LIKE 'date_creation' ")->fetchAll();
+                $tableExist = false;
+                foreach($selectTouteLesTables as $uneTable){
+                    if($uneTable['nomTable'] == 'csv_'.$presta){
+                        $tableExist = true ;
+                    }
+                }
+                if($tableExist == true){
+                    //Pour afficher les colonnes liés entre presta et csv 
+                    $ColonnePrestaCsv = $conn->query("SELECT * from csv_$presta")->fetchAll();
+                    return $this->render('import/messageApresImport.html.twig',[
+                        'presta' => $presta,
+                        'tableExist' => $tableExist,
+                        'colonnePrestaCsv'=>$ColonnePrestaCsv,
+                    ]);
+                }
+                else{
+                    return $this->render('import/messageApresImport.html.twig',[
+                        'presta' => $presta,
+                        'tableExist' => $tableExist,
+                    ]);
+                }
+            }
+            
+                
+        }
+            return $this->render('ticket/import.html.twig',[
+                'form' => $form->createView()
+            ]);
     }
 
     /**
@@ -89,8 +134,10 @@ class ImportController extends IndexController
             $form-> handleRequest($request);
             // Envoie des colonnes du presta et colonnnes des tickets 
             $conn = $manager->getConnection();
-            $colonnePresta= $conn->query( " SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME ='$presta'  and COLUMN_NAME not in ('id' , 'date_creation')")->fetchAll();
-            $colonneCSV= $conn->query( "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='intermediaire' and COLUMN_NAME not in ('idPresta')")->fetchAll();
+            $colonnePresta= $conn->query( " SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME ='$presta'  
+                                            and COLUMN_NAME not in ('id' , 'date_creation')")->fetchAll();
+            $colonneCSV= $conn->query( "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='intermediaire' 
+                                        and COLUMN_NAME not in ('idPresta')")->fetchAll();
 
                 if($form->isSubmitted() && $form->isValid()){
                     // Parcours de toutes les tables de la base
@@ -109,9 +156,10 @@ class ImportController extends IndexController
                     // Si la table csv_presta n'existe pas, on la créer
                     if($tableExist == false){
                         $conn = $manager->getConnection();
-                        $create= $conn->query( "CREATE TABLE csv_$presta ( id INT PRIMARY KEY NOT NULL AUTO_INCREMENT , date_creation VARCHAR(255) , colonnePresta VARCHAR(255) , colonneCSV VARCHAR(255)  )  ");
+                        $create= $conn->query( "CREATE TABLE csv_$presta (  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT , date_creation VARCHAR(255) , 
+                                                                            colonnePresta VARCHAR(255) , colonneCSV VARCHAR(255)  )  ");
                     }
-                    //Si elle existe, on la supprimer et on la recréer.
+                    //Si elle existe, on la supprime et on la recréer.
                     else{
                         $conn = $manager->getConnection();
                         $drop = $conn->query("DROP TABLE csv_$presta");
@@ -121,7 +169,8 @@ class ImportController extends IndexController
                     foreach($colonnePresta as $c) {
                         if($_POST[$c['COLUMN_NAME']] != ""){
                             $conn = $manager->getConnection();
-                            $insert = $conn->query("INSERT INTO csv_$presta (colonnePresta , colonneCsv) VALUES (\"".$c['COLUMN_NAME']."\"  ,\"".$_POST[$c['COLUMN_NAME']]."\")");
+                            $insert = $conn->query("INSERT INTO csv_$presta (colonnePresta , colonneCsv) 
+                                                    VALUES (\"".$c['COLUMN_NAME']."\"  ,\"".$_POST[$c['COLUMN_NAME']]."\")");
                         }
                     }
                     //On fini par insérer les données selon les colonnes
@@ -200,6 +249,8 @@ class ImportController extends IndexController
         // On parcourt touts les tickets
         // Premère ligne = titre des colonnes
         $cpLigne = 1 ; 
+        $cpErreur = 0 ;
+        $nbTicketErreur[]=0;
         foreach($csv as $ticket){
             if($cpLigne==1){
                 $cpColonne=1;
@@ -216,30 +267,36 @@ class ImportController extends IndexController
                     }
                     $cpColonne = $cpColonne +1 ;
                 }
+                $nbColonne = \count($ticket);
+                $cpLigne = $cpLigne +1 ;
             }
             // Ensuite on insère les données
-            // Comme la table vient d'etre créer,  premiere ligne = 1 , etc...
-            // Donc première fois on insère puis ensuite on update
+            // Première fois on insère puis ensuite on update
             else{
                 $cpDonnees = 1;
-                $cpID = $cpLigne -1 ;
-                foreach($ticket as $d){
-                    $d = \str_replace(array("\"") , " " , $d);
-                    if($cpDonnees == 1) {
-                        $conn = $manager->getConnection();
-                        $insert= $conn->query("INSERT INTO intermediaire (".${'titreColonne'.$cpDonnees}.") VALUES (".$d.")");
+                $nbInfoTicket=\count($ticket);
+                if($nbInfoTicket > $nbColonne){
+                    $nbTicketErreur[$cpErreur] = $ticket[0] ;
+                    $cpErreur = $cpErreur +1 ;
+                }
+                else{
+                    foreach($ticket as $d){
+                        $d = \str_replace(array("\"") , " " , $d);
+                        if($cpDonnees == 1) {
+                            $conn = $manager->getConnection();
+                            $insert= $conn->query("INSERT INTO intermediaire (".${'titreColonne'.$cpDonnees}.") VALUES (".$d.")");
+                            $cpID = $conn->lastInsertId();
+                        }
+                        else{
+                            $conn = $manager->getConnection();
+                            $update= $conn->query("UPDATE intermediaire SET ".${'titreColonne'.$cpDonnees}." = \"".$d."\" WHERE idPresta = ".$cpID."");
+                        }
+                        $cpDonnees =$cpDonnees +1 ;
                     }
-                    else{
-                        $conn = $manager->getConnection();
-                        $update= $conn->query("UPDATE intermediaire SET ".${'titreColonne'.$cpDonnees}." = \"".$d."\" WHERE idPresta = ".$cpID."");
-                    }
-                    $cpDonnees =$cpDonnees +1 ;
-                }     
+                }
+                $cpLigne = $cpLigne+1;
             }
-            $cpLigne = $cpLigne+1;
         }
+        return $nbTicketErreur;
     }
-
-    
-
 }

@@ -14,7 +14,7 @@ class FiltrerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('Liaison', SubmitType::class)
+        ->add('Liaison', SubmitType::class ,  ['attr' => ['class' =>  'btn btn-info']])
         ;
     }
 
