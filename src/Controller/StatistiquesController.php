@@ -34,6 +34,10 @@ class StatistiquesController extends AbstractController
         foreach($selectTicketParPresta as $ligne){
             $tabNbTicketPrestaResolution[$ligne['resolution']][$ligne['type']]=$ligne['nbTicket'];
             $tabTempsTicketPrestaResolution[$ligne['resolution']][$ligne['type']]=$ligne['tempsTotal'];
+            if($ligne['resolution'] == '' ){
+                $tabNbTicketPrestaResolution['résolu'][$ligne['type']]=$ligne['nbTicket'];
+                $tabTempsTicketPrestaResolution['résolu'][$ligne['type']]=$ligne['tempsTotal'];
+            }
         }
         // Nomnbre de ticket selon le mois
         $selectTicketParMois =$conn->query("SELECT count(id) as nbTicket ,sum(temps) as tempsTotal, month(mise_a_jour) as mois FROM `affichage` 

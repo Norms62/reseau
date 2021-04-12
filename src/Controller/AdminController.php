@@ -31,7 +31,7 @@ class AdminController extends AbstractController
     {
         $conn = $manager->getConnection();
         // Erreur sur le temps
-        $selectDistinctTemps = $conn->query("SELECT temps, id from affichage where temps !=''")->fetchAll();
+        $selectDistinctTemps = $conn->query("SELECT temps,traitement_id as id from affichage where temps !=''")->fetchAll();
         $ErreurTemps[0]=0;
         $TempsTropLong[0] = 0;
         $cpErreurTemps=0;
@@ -41,14 +41,14 @@ class AdminController extends AbstractController
                 $ErreurTemps[$cpErreurTemps] = $s['id'];
                 $cpErreurTemps +=1;
             }
-            if($s['temps']>60){
+            if($s['temps']>1000){
                 $TempsTropLong[$cpTempsTropLong] = $s['id'];
                 $cpTempsTropLong +=1;
             }
         }
 
         // erreur sur la priorité
-        $selectDistinctPriorite = $conn->query("SELECT priorite , id  from affichage where priorite!= '' ")->fetchAll();
+        $selectDistinctPriorite = $conn->query("SELECT priorite , traitement_id as id  from affichage where priorite!= '' ")->fetchAll();
         $erreurPriorite[0] = 0 ;
         $PrioriteTropLongue[0] = 0; 
         $cpErreurPriorite = 0;
@@ -65,7 +65,7 @@ class AdminController extends AbstractController
         }
 
         // erreur sur l'impact
-        $selectDistinctImpact = $conn->query("SELECT impact , id from affichage where impact!= '' ")->fetchAll();
+        $selectDistinctImpact = $conn->query("SELECT impact ,traitement_id as id from affichage where impact!= '' ")->fetchAll();
         $erreurImpact[0] = 0 ;
         $impactTropLong[0] = 0; 
         $cpErreurImpact = 0;
@@ -82,7 +82,7 @@ class AdminController extends AbstractController
         }
 
         // erreur sur la résolution
-        $selectResolution = $conn->query("SELECT resolution , id from affichage where resolution != '' ")->fetchAll();
+        $selectResolution = $conn->query("SELECT resolution , traitement_id as id from affichage where resolution != '' ")->fetchAll();
         $erreurResolution[0]=0;
         $cpErreurResolution =0;
         $cpResolutionTropLongue = 0;
@@ -99,7 +99,7 @@ class AdminController extends AbstractController
         }
 
         // erreur sur les états
-        $selectEtat = $conn->query("SELECT etat , id from affichage where etat != '' ")->fetchAll();
+        $selectEtat = $conn->query("SELECT etat , traitement_id as id from affichage where etat != '' ")->fetchAll();
         $erreurEtat[0]=0;
         $cpErreurEtat =0;
         $EtatTropLong[0] = 0;
@@ -116,11 +116,11 @@ class AdminController extends AbstractController
         }
 
         // erreur sur les résumé
-        $selectResume = $conn->query("SELECT resume , id from affichage where resume != '' ")->fetchAll();
+        $selectResume = $conn->query("SELECT resume , traitement_id as id from affichage where resume != '' ")->fetchAll();
         $erreurResume[0]=0;
         $cpErreurResume =0;
         foreach($selectResume as $s) {
-            if(\strlen($s['resume']) > 100 ) {
+            if(\strlen($s['resume']) > 500 ) {
                 $erreurResume[$cpErreurResume] =$s['id'];
                 $cpErreurResume +=1;
             } 
@@ -153,46 +153,101 @@ class AdminController extends AbstractController
         $selectDistinctResolution=$conn->query("SELECT distinct(resolution) from affichage where resolution != '' ")->fetchAll();
 
         if ($form->isSubmitted()) {
+            
             $presta = $_POST['nomPresta'];
             $resolution = $_POST['resolution'];
             $mois=$_POST['mois'];
 
-            $conn = $manager->getConnection();
-            $deleteAffichage = "DELETE FROM affichage WHERE id !=''";
-            $deleteTraitement = "DELETE from traitement where id != '' ";
-            $deletePresta = "";
-            if($presta != 'non'){
-                $deleteAffichage = $deleteAffichage." and type='$presta' ";
-                $deleteTraitement = $deleteTraitement." and type='$presta' ";
-            }
-            if($resolution != 'non'){
-                $deleteAffichage = $deleteAffichage." and resolution='$resolution' ";
-                $deleteTraitement = $deleteTraitement." and resolution='$resolution' ";
-                $deletePresta =$deletePresta." and resolution='$resolution' ";
-            }
-            if($mois != 'non'){
-                $deleteAffichage = $deleteAffichage." and mise_a_jour <= date(now()- INTERVAL ".$mois." MONTH) ";
-                $deleteTraitement = $deleteTraitement." and mise_a_jour <= date(now()- INTERVAL ".$mois." MONTH) ";
-                $deletePresta =$deletePresta." and mise_a_jour <= date(now()- INTERVAL ".$mois." MONTH) ";
-            }
-            $deleteAffichage= $conn->query($deleteAffichage);
-            $deleteTraitement= $conn->query($deleteTraitement);
-            if($presta!='non'){
-                $deletePresta= $conn->query("DELETE from $presta where id != '' ".$deletePresta);
-            }
-            else{
-                foreach($selectPresta as $s){
-                    $supPresta="DELETE from ".$s['nom']." where id != '' ".$deletePresta;
-                    $supPresta= $conn->query($supPresta);
+            if($presta != 'non' || $resolution != 'non' || $mois !='non'){
+                $conn = $manager->getConnection();
+                $deleteAffichage = "DELETE FROM affichage WHERE id !=''";
+                $deleteTraitement = "DELETE from traitement where id != '' ";
+                $deletePresta = "";
+                if($presta != 'non'){
+                    $deleteAffichage = $deleteAffichage." and type='$presta' ";
+                    $deleteTraitement = $deleteTraitement." and type='$presta' ";
                 }
-            }
+                if($resolution != 'non'){
+                    $deleteAffichage = $deleteAffichage." and resolution='$resolution' ";
+                    $deleteTraitement = $deleteTraitement." and resolution='$resolution' ";
+                    $deletePresta =$deletePresta." and resolution='$resolution' ";
+                }
+                if($mois != 'non'){
+                    $deleteAffichage = $deleteAffichage." and mise_a_jour <= date(now()- INTERVAL ".$mois." MONTH) ";
+                    $deleteTraitement = $deleteTraitement." and mise_a_jour <= date(now()- INTERVAL ".$mois." MONTH) ";
+                    $deletePresta =$deletePresta." and mise_a_jour <= date(now()- INTERVAL ".$mois." MONTH) ";
+                }
+                $deleteAffichage= $conn->query($deleteAffichage);
+                $deleteTraitement= $conn->query($deleteTraitement);
+                if($presta!='non'){
+                    $deletePresta= $conn->query("DELETE from $presta where id != '' ".$deletePresta);
+                }
+                else{
+                    foreach($selectPresta as $s){
+                        $supPresta="DELETE from ".$s['nom']." where id != '' ".$deletePresta;
+                        $supPresta= $conn->query($supPresta);
+                    }
+                }
 
-            return $this->redirectToRoute('ticket');
+                return $this->redirectToRoute('ticket');
+            }
         }
         return $this->render('admin/supp_ticket.html.twig',[
             'presta'=>$selectPresta,
             'form'=>$form->createView(),
             'resolution' => $selectDistinctResolution,
         ]);
+    }
+
+    /**
+     * @Route("/listeAsso" , name="liste_asso")
+     */
+    public function listeAsso(EntityManagerInterface $manager):Response
+    {
+        $conn = $manager->getConnection();
+        $selectDistinctAsso = $conn->query("SELECT distinct(nom_asso) , region_adm,region_RE , id from associations");
+
+        foreach ($selectDistinctAsso as $s){
+            $nom_asso = $s['nom_asso'];
+            $selectNbTicketParAsso = $conn->query("SELECT nom , prenom from associations where nom_asso = \"$nom_asso\"");
+            $cpTicket = 0;
+            foreach($selectNbTicketParAsso as $a){
+                $nomComplet = $a['nom'].' '.$a['prenom'];
+                $nomComplet2 = $a['prenom'].' '.$a['nom'];
+                $selectCountTicket = $conn->query("SELECT rapporteur , count(*)  as nbTicket from affichage where rapporteur = \"$nomComplet\" or rapporteur = \"$nomComplet2\"")->fetch();
+                $cpTicket += $selectCountTicket['nbTicket'];
+            }
+            $tabNbTicketParAsso[$s['id']] =$cpTicket;
+        }
+
+        $selectDistinctAsso = $conn->query("SELECT distinct(nom_asso) , region_adm,region_RE , id from associations group by nom_asso");
+
+        return $this->render('admin/listeAsso.html.twig',[
+            'listeAsso' =>$selectDistinctAsso,
+            'nbTicket' => $tabNbTicketParAsso
+        ]);
+    }
+
+    /**
+     * @Route("/listeAsso/{nom_asso}" , name="liste_une_asso")
+     */
+    public function listeUneAsso($nom_asso,EntityManagerInterface $manager):Response
+    {
+        $conn = $manager->getConnection();
+        $selectUneAsso = $conn->query("SELECT id ,nom,prenom,sexe,fonction from associations where nom_asso=\"$nom_asso\"")->fetchAll();
+        foreach ($selectUneAsso as $s) {
+            $nomComplet = $s['nom'].' '.$s['prenom'];
+            $nomComplet2 = $s['prenom'].' '.$s['nom'];
+            $selectCountTicket = $conn->query("SELECT rapporteur , count(*)  as nbTicket from affichage where rapporteur = \"$nomComplet\" or rapporteur = \"$nomComplet2\"")->fetch();
+            $NbTicketParPersonne[$s['id']] = $selectCountTicket['nbTicket'];
+            $rapporteur[$s['id']] = $selectCountTicket['rapporteur'];
+        }
+
+        return $this->render('admin/listeUneAsso.html.twig',[
+            'Asso' =>$selectUneAsso,
+            'nom_asso'=>$nom_asso,
+            'tabNbTicket' => $NbTicketParPersonne,
+            'rapporteur' => $rapporteur
+        ]); 
     }
 }

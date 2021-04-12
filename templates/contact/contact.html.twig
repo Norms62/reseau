@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+  <h1  style="color : #F4B82A ; font-weight : bold"> Contact  </h1>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+{{form_start(form)}}
+    <div class="row">
+        <div class="col-sm-8 col-lg-12">
+            <div class="well well-sm">
+                <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label name="name">Nom</label>
+                            <input type="text" class="form-control" name="nom" placeholder="Entrer votre nom" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="email" placeholder="Entrer votre email" required="required" />
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" class="form-control" name="sujet" placeholder="Sujet " required="required" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Message</label>
+                            <textarea name="message" name="message" class="form-control" rows="9" cols="25" required="required"
+                                placeholder="Saisissez votre message"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        {{form_widget(form.Envoyer)}}
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{form_end(form)}}
+
+{% endblock %}

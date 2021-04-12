@@ -70,7 +70,8 @@ class TicketController extends IndexController
             $filtre_impact=$_POST['impact'];
             $filtre_resolution=$_POST['resolution'];
             $filtre_etat=$_POST['etat'];
-            
+            $filtre_date = $_POST['date'];
+                        
             //Début de la requete
             // where id!='' permet de passer direct apres a la condition AND
             $conn = $manager->getConnection();
@@ -90,6 +91,9 @@ class TicketController extends IndexController
             }
             if($filtre_resolution != "tout"){
                 $affichage = $affichage." AND resolution='$filtre_resolution'";
+            }
+            if($filtre_date != ""){
+                $affichage = $affichage." AND mise_a_jour='$filtre_date'";
             }
             // Puis on éxécute la requete
             $affichage = $affichage." order by mise_a_jour desc";
@@ -249,4 +253,50 @@ class TicketController extends IndexController
         ]);
     }
 
+    /**
+     * @Route("/listeTicket/{rapporteur}" , name = "listeTicketUnePersonne")
+     */
+    public function listeTicketUnePersonne($rapporteur , EntityManagerInterface $manager)
+    {
+        // Inverse de nom et prénom aux cas ou c'est inversé dans la base 
+        $test = \explode(' ' , $rapporteur);
+        $rapporteur2 = $test[1].' '.$test[0];
+        $conn = $manager->getConnection();
+        $colonne = $conn->query("  SELECT COLUMN_NAME  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'affichage' 
+        and COLUMN_NAME not in ('id','type','mise_a_jour','date_creation','nb_ticket_regroup','ref','traitement_id') ")->fetchAll();
+
+        $selectTicket = $conn->query("SELECT * from affichage where rapporteur=\"$rapporteur\" or rapporteur=\"$rapporteur2\" order by mise_a_jour desc");
+        
+        return $this->render('ticket/listeTicketUnePersonne.html.twig',[
+            'rapporteur' => $rapporteur,
+            'colonne'=>$colonne,
+            'ticket' => $selectTicket
+        ]);
+    }
+
+    /**
+     * @Route("/listeTicketParAsso/{asso}" , name = "listeTicketUneAsso")
+     */
+    public function listeTicketUneAsso($asso , EntityManagerInterface $manager)
+    {
+        $conn = $manager->getConnection();
+        $colonne = $conn->query("  SELECT COLUMN_NAME  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'affichage' 
+        and COLUMN_NAME not in ('id','type','mise_a_jour','date_creation','nb_ticket_regroup','ref','traitement_id') ")->fetchAll();
+
+        $selectTicketParAsso = $conn->query("SELECT nom , prenom from associations where nom_asso = \"$asso\"");
+        foreach($selectTicketParAsso as $s){
+            $nomComplet = $s['nom'].' '.$s['prenom'];
+            $nomComplet2 = $s['prenom'].' '.$s['nom'];
+            $selectTicket = $conn->query("SELECT * from affichage where rapporteur = \"$nomComplet\" or rapporteur = \"$nomComplet2\" order by mise_a_jour desc")->fetchAll();
+            foreach($selectTicket as $a){
+                $tabTicket[$asso][$a['id']]= $a;
+            }
+        }
+
+        return $this->render('ticket/listeTicketUneAsso.html.twig',[
+            'asso' => $asso,
+            'colonne'=>$colonne,
+            'tabTicket' =>$tabTicket
+        ]);              
+    }
 }
