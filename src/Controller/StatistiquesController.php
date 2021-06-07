@@ -19,7 +19,6 @@ class StatistiquesController extends AbstractController
     public function index( EntityManagerInterface $manager): Response
     {
         $conn = $manager->getConnection();
-
         // Affichage tickets par prestataire selon résolution
         $selectDistinctResolution=$conn->query("SELECT distinct(resolution) from affichage where resolution != '' ")->fetchAll();
         $selectDistinctPrestataire = $conn->query("SELECT nom from prestataire")->fetchAll();
@@ -50,32 +49,6 @@ class StatistiquesController extends AbstractController
             $tabNbTicket[$unMois['mois']]=$unMois['nbTicket'];
             $tabTempsTotal[$unMois['mois']]=$unMois['tempsTotal'];
         }
-        // Affichage des priorités selon la résolution
-        $selectDistinctPriorite = $conn->query("SELECT distinct(priorite) as priorite FROM affichage where priorite != ''")->fetchAll(); 
-        $NbTicketSelonPrioriteResolution= $conn->query("SELECT count(id) as nbTicket , priorite , resolution from affichage where priorite != '' 
-                                                        group by priorite , resolution")->fetchAll();
-        foreach($selectDistinctPriorite as $ligne){
-            $tabPrioriteResolution['ouvert'][$ligne['priorite']]=0;
-            $tabPrioriteResolution['résolu'][$ligne['priorite']]=0;
-            $tabPrioriteResolution['réouvert'][$ligne['priorite']]=0;
-            $tabPrioriteResolution[""][$ligne['priorite']]=0;
-        }
-        foreach($NbTicketSelonPrioriteResolution as $ligne){
-            $tabPrioriteResolution[$ligne['resolution']][$ligne['priorite']] = $ligne['nbTicket'];
-        }
-        //Affichage des impacts selon la résolution
-        $selectDistinctImpact = $conn->query("SELECT distinct(impact) as impact FROM affichage where impact != ''")->fetchAll();
-        $NbTicketSelonImpactResolution= $conn->query("SELECT count(id) as nbTicket , impact , resolution from affichage where impact != '' 
-                                                      group by impact , resolution")->fetchAll();
-        foreach($selectDistinctImpact as $ligne){
-            $tabImpactResolution['ouvert'][$ligne['impact']]=0;
-            $tabImpactResolution['résolu'][$ligne['impact']]=0;
-            $tabImpactResolution['réouvert'][$ligne['impact']]=0;
-            $tabImpactResolution[''][$ligne['impact']]=0;
-        }
-        foreach($NbTicketSelonImpactResolution as $ligne){
-            $tabImpactResolution[$ligne['resolution']][$ligne['impact']] = $ligne['nbTicket'];
-        }
 
         //Affichage des tickets du jour , la veille , semaine et mois
         $selectTicketDuJour = $conn->query("SELECT count(id) as nbTicket FROM affichage WHERE mise_a_jour = date(now())")->fetchAll();
@@ -88,11 +61,7 @@ class StatistiquesController extends AbstractController
             'tabNbTicket' => $tabNbTicket,
             'tabTempsTotal' => $tabTempsTotal,
             'ticketParPresta'=>$selectTicketParPresta,
-            'priorite' => $selectDistinctPriorite,
-            'impact'=>$selectDistinctImpact,
             'resolution'=>$selectDistinctResolution,
-            'tabPrioriteResolution' => $tabPrioriteResolution,
-            'tabImpactResolution'=>$tabImpactResolution,
             'tabNbPrestaResolution' => $tabNbTicketPrestaResolution,
             'tabTempsPrestaResolution'=>$tabTempsTicketPrestaResolution,
             'ticketDuJour'=>$selectTicketDuJour,

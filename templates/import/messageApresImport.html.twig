@@ -7,25 +7,42 @@
         <h1> Votre fichier a été importé , il s'agit de la première importation pour le presta {{presta}}  </h1>
         <h3><a href="http://127.0.0.1:8000/liaison/{{presta}}/oui"> Choisir les colonnes à utiliser   </h3>
     {% else %}
-        <h1> Votre fichier a été importé. Ci-dessous, un rappel des laisons entre les colonnes de {{presta}} et du csv  </h1>
+        <h1> Votre fichier a été importé. Ci-dessous, un rappel des laisons entre les colonnes du csv et du prestataire {{presta}}  </h1>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th> Colonne {{presta}} </th>
                     <th> Colonne Csv </th>
+                    <th> Colonne {{presta}} </th>
                 </tr>
             </thead>
             <tbody>
                 
                 {% for c in colonnePrestaCsv %}
                     <tr>
-                        <td> {{c.colonnePresta}} </td>
                         <td> {{c.colonneCSV}} </td>
+                        <td> {{c.colonnePresta}} </td>
+                    </tr>
+                {% endfor %}
+                {% for c in colonneNonUtilise %}
+                    <tr>
+                        <td> {{c.COLUMN_NAME}}  </td>
+                        <td>Non utilisé</td> 
                     </tr>
                 {% endfor %}
                 
             </tbody>
         </table>
+        <br>
+        {% if colonneExistePlus|length > 0  %}
+         <h1> Attention , la ou les colonnes suivantes n'existe plus dans les colonnes du fichier CSV : 
+         <br>
+         {% for c in colonneExistePlus %}
+             {{c.ColonneCSV}} -- 
+         {% endfor %}
+         <br>
+         Vous ne pourrez pas faire l'importation si vous ne modifier pas les liaisons. </h2><br>
+        {% endif %}
+        
         <h1> Souhaitez vous modifier ces liaisons ? </h1>
         <button type="button" class="btn btn-info btn-lg" onclick="document.location.href='http://127.0.0.1:8000/liaison/{{presta}}/oui';" >OUI</button>
         <button type="button" class="btn btn-warning btn-lg" onclick="document.location.href='http://127.0.0.1:8000/liaison/{{presta}}/non';" >NON</button>

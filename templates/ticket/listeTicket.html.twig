@@ -11,20 +11,6 @@
           <option> {{p.nom }} </option>
       {% endfor %}
     </select>
-    <label style="font-weight : bold">Priorité </label>
-    <select style="border-color : #59C3B5 ; padding:5px "name="priorite">
-      <option value="tout"> Tous </option>
-      {% for p in priorite %} 
-          <option> {{p.priorite }} </option>
-      {% endfor %}
-    </select>
-    <label style="font-weight : bold">Impact </label>
-    <select style="border-color : #59C3B5 ; padding:5px"name="impact">
-      <option value="tout"> Tous </option>
-      {% for p in impact %} 
-          <option> {{p.impact }} </option>
-      {% endfor %}
-    </select>
     <label  style="font-weight : bold"> Resolution </label>
     <select style="border-color : #59C3B5 ; padding:5px"name="resolution">
       <option value="tout"> Tous </option>
@@ -32,13 +18,6 @@
           <option> {{p.resolution }} </option>
       {% endfor %}
     </select>
-    <label style="font-weight : bold">Etat </label>
-    <select style="border-color : #59C3B5 ; padding:5px" name="etat">
-      <option style="color : red " value="tout"> Tous </option>
-      {% for p in etat %} 
-          <option> {{p.etat }} </option>
-      {% endfor %}
-    </select>  
     <label style="font-weight : bold">Date </label>
     <input type="date" name="date"  style="border-color : #59C3B5 ; padding:5px" ></input>
     {{form_widget(form.Envoyer)}}
@@ -71,39 +50,56 @@
           <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ n.id }} </td>
           <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">
             <a href= "http://127.0.0.1:8000/ticket/{{n.id}}" style="color:#0000FF"> {{ n.type }} </a></td>
-          <td style="background-color:#33FFFF ; vertical-align : middle ; border : 1px solid grey">{{n.mise_a_jour}}</td>
+          <td style="background-color:#33FFFF ; vertical-align : middle ; border : 1px solid grey" class="text-center">{{n.mise_a_jour|date('d/m/Y')}}</td>
           {% for c in colonneTable %}
-                    <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">{{n[c.COLUMN_NAME]}}</td>
+              {% if c.COLUMN_NAME == 'temps'%}
+                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ (n[c.COLUMN_NAME])|round }} </td>
+              {% elseif c.COLUMN_NAME == 'date_soumission'%}
+                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ n.date_soumission|date('d/m/Y') }} </td>
+              {% else %}
+                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">{{n[c.COLUMN_NAME]}}</td>
+              {% endif %}
           {% endfor %}
         </tr>
     {% endfor %}
-    {# Parcours des tickets déja présent dans traitement et affichage #}
-    {% for a in listeAffichage %}
-      {% for t in traitement %}
-          {% if a.traitement_id == t.id %}
-              <tr>
-                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.id }} </td>
-                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">
-                  <a href= "http://127.0.0.1:8000/ticket/{{a.traitement_id}}" style="color: #0000FF"> {{ a.type }} </a></td>
-                {% if a.mise_a_jour == t.mise_a_jour %}
-                    <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.mise_a_jour|date('d/m/Y') }} </td>
-                {% else %}
-                    <td style="vertical-align : middle;background-color:#00FF00 ; border : 1px solid grey" class="text-center">{{a.mise_a_jour|date('d/m/Y')}}</td>
-                {% endif %}
-                {% for c in colonneTable %}
-                    {% if c.COLUMN_NAME == 'temps'%}
-                      <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ (a[c.COLUMN_NAME])|round }} </td>
-                    {% elseif c.COLUMN_NAME == 'date_soumission'%}
-                      <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.date_soumission|date('d/m/Y') }} </td>
-                    {% elseif a[c.COLUMN_NAME] !=  t[c.COLUMN_NAME] %}
-                      <td style="background-color:#00FF00 ; vertical-align : middle ; border : 1px solid grey" class="text-center">{{a[c.COLUMN_NAME]}}</td>
-                    {% else %}
-                      <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">{{a[c.COLUMN_NAME]}}</td>
-                    {% endif %}
-                {% endfor %}
-              </tr>
+    {# Parcours des tickets modifiés #}
+    {% for n in ticketModif %}
+        <tr>
+          <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ n.id }} </td>
+          <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">
+            <a href= "http://127.0.0.1:8000/ticket/{{n.id}}" style="color:#0000FF"> {{ n.type }} </a></td>
+          <td style="background-color:#00FF00 ; vertical-align : middle ; border : 1px solid grey" class="text-center">{{n.mise_a_jour|date('d/m/Y')}}</td>
+          {% for c in colonneTable %}
+              {% if c.COLUMN_NAME == 'temps'%}
+                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ (n[c.COLUMN_NAME])|round }} </td>
+              {% elseif c.COLUMN_NAME == 'date_soumission'%}
+                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ n.date_soumission|date('d/m/Y') }} </td>
+              {% elseif n[c.COLUMN_NAME] != traitement[n.id][c.COLUMN_NAME] %}
+                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">{{n[c.COLUMN_NAME]}} <br> <p style="color:#0E06F4 ; font-weight : bold">{{traitement[n.id][c.COLUMN_NAME]}}</p>
+                </td>
+              {% else %}
+                <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">{{n[c.COLUMN_NAME]}}</td>
+              {% endif %}
+          {% endfor %}
+        </tr>
+    {% endfor %}
+    {# Parcours du reste des tickets #}
+    {% for a in ticketNonModif %}
+      <tr>
+        <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.id }} </td>
+        <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">
+        <a href= "http://127.0.0.1:8000/ticket/{{a.traitement_id}}" style="color: #0000FF"> {{ a.type }} </a></td>
+        <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.mise_a_jour|date('d/m/Y') }} </td>
+        {% for c in colonneTable %}
+          {% if c.COLUMN_NAME == 'temps'%}
+            <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ (a[c.COLUMN_NAME])|round }} </td>
+          {% elseif c.COLUMN_NAME == 'date_soumission'%}
+            <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.date_soumission|date('d/m/Y') }} </td>
+          {% else %}
+            <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">{{a[c.COLUMN_NAME]}}</td>
           {% endif %}
-      {% endfor %}
+        {% endfor %}
+      </tr>
     {% endfor %}
     </tbody>
     </table>

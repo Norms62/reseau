@@ -43,13 +43,13 @@ class IndexController extends AbstractController
         // Limit permet de parcourir tout les autres presta (presta1 -> compare ref avec presta 2 et 3 // Presta 2 -> compare ref avec presta 3)
         for ($i=1; $i<=$cp ; $i++) { 
             foreach (${'liste'.$i} as $ticket1){
-                $limit = $i+1;
+                /*$limit = $i+1;
                 while($limit <= $cp) {
                     foreach (${'liste'.$limit} as $ticket2){
                         $this->compareRef($ticket1 ,$ticket2 , ${'nomPresta'.$i} , ${'nomPresta'.$limit} , $manager) ; 
                     }
                     $limit = $limit +1;
-                }
+                }*/
                 // Insertion de chaque ticket dans traitement
                 $this->insertTraitement($ticket1,${'nomPresta'.$i},$manager);
             }
@@ -188,10 +188,8 @@ class IndexController extends AbstractController
             foreach($traitement as $t){
                 foreach($affichage as $a){
                     if($a['traitement_id'] == $t['id']){
-                        if($a['mise_a_jour'] != $t['mise_a_jour']){
-                            foreach($colonne as $c){
-                                $update = $conn->query('UPDATE affichage set '.$c['COLUMN_NAME'].' = "'.$t[$c['COLUMN_NAME']].'" where traitement_id ='.$t['id']);
-                            }
+                        foreach($colonne as $c){
+                            $update = $conn->query('UPDATE affichage set '.$c['COLUMN_NAME'].' = "'.$t[$c['COLUMN_NAME']].'" where traitement_id ='.$t['id']);
                         }
                     }
                 }

@@ -6,12 +6,12 @@
     <h1  style="color : #F4B82A ; font-weight : bold"> A gauche, les colonnes du prestataire. choississez à quelles colonnes du CSV elles correspondent </h1>
     {{form_start(form) }}
 
-    {% for c in colonnePresta %}
+    {% for c in colonneCSV %}
         <div class="mb-3">
             <h2><label  class="col-sm-2 col-form-label"> {{ c.COLUMN_NAME }}  </label>
             <select  name='{{ c.COLUMN_NAME }}'>
                 <option value=""> Ne pas utiliser </option></h2>
-                {% for p in colonneCSV %}
+                {% for p in colonnePresta %}
                     <h2><option >{{ p.COLUMN_NAME }}</option></h2>
                 {% endfor %}
             </select>

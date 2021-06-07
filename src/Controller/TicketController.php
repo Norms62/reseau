@@ -10,6 +10,7 @@ use App\Form\BoutonType;
 use App\Form\UploadType;
 use App\Form\FiltrerType;
 use App\Entity\Traitement;
+use App\Entity\Utilisateurs;
 use App\Form\TraitementType;
 use App\Controller\IndexController;
 use Doctrine\ORM\EntityManagerInterface;
@@ -37,8 +38,8 @@ class TicketController extends IndexController
 
         //Info qui servira a comparer la date de mise a jour pour voir si il y a eu modif sur le ticket
         $conn = $manager->getConnection();
-        $affichage= $conn   ->query("SELECT * FROM affichage order by mise_a_jour desc")->fetchAll();
-        $traitement= $conn  ->query("SELECT * FROM traitement order by type")->fetchAll();
+        $affichage= $conn   ->query("SELECT * FROM affichage order by date_soumission desc")->fetchAll();
+        $traitement= $conn  ->query("SELECT * FROM traitement order by date_soumission desc")->fetchAll();
         $colonne = $conn    ->query("SELECT COLUMN_NAME  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'traitement' 
                                      and COLUMN_NAME not in ('id','date_creation','nb_ticket_regroup')
                                      and COLUMN_NAME not like ('ticket%')")->fetchAll();
@@ -50,9 +51,6 @@ class TicketController extends IndexController
 
         //Infos qui servira au filtre
         $presta = $conn     ->query("SELECT * FROM prestataire ")->fetchAll();
-        $priorite=$conn     ->query("SELECT DISTINCT(priorite) from affichage where priorite != '' ");
-        $impact = $conn     ->query("SELECT DISTINCT(impact) from affichage where impact != '' ");
-        $etat = $conn       ->query("SELECT DISTINCT(etat) from affichage where etat != ''");
         $resolution = $conn ->query("SELECT DISTINCT(resolution) from affichage where resolution != ''");
 
         //Si on valide les mise a jour, le traitement va vers affichage
@@ -66,10 +64,7 @@ class TicketController extends IndexController
         //Permet de filtrer selon les infos demandées
         if ($form->isSubmitted() && $form->isValid()) {
             $filtre_presta = $_POST['nomPresta'];
-            $filtre_priorite=$_POST['priorite'];
-            $filtre_impact=$_POST['impact'];
             $filtre_resolution=$_POST['resolution'];
-            $filtre_etat=$_POST['etat'];
             $filtre_date = $_POST['date'];
                         
             //Début de la requete
@@ -80,39 +75,53 @@ class TicketController extends IndexController
             if($filtre_presta != "tout"){
                 $affichage = $affichage." AND type='$filtre_presta'";
             }
-            if($filtre_etat != "tout"){
-                $affichage = $affichage." AND etat='$filtre_etat'";
-            }
-            if($filtre_impact != "tout"){
-                $affichage = $affichage." AND impact='$filtre_impact'";
-            }
-            if($filtre_priorite != "tout"){
-                $affichage = $affichage." AND priorite='$filtre_priorite'";
-            }
             if($filtre_resolution != "tout"){
                 $affichage = $affichage." AND resolution='$filtre_resolution'";
             }
             if($filtre_date != ""){
-                $affichage = $affichage." AND mise_a_jour='$filtre_date'";
+                $affichage = $affichage." AND date_soumission='$filtre_date'";
             }
             // Puis on éxécute la requete
-            $affichage = $affichage." order by mise_a_jour desc";
+            $affichage = $affichage." order by date_soumission desc";
             $affichage= $conn->query($affichage)->fetchAll();
 
-            //return $this->redirectToRoute('ticket');
+        }
+
+        // Séparation des tickets modifs et non modifs
+        $tabTicketModif = [];
+        $tabTicketNonModif = [];
+        $tabTraitement=[];
+        foreach($affichage as $a){
+            foreach($traitement as $t){
+                if($a['traitement_id'] == $t['id']){
+                    $cp=0;
+                    foreach($colonne as $c ){
+                        $nomColonne = $c['COLUMN_NAME'];
+                        if($a[$nomColonne] != $t[$nomColonne]){
+                            $tabTicketModif[$a['id']] = $a;
+                            $cp=1;
+                            break;
+                        }
+                    }
+                    if($cp==0){
+                        $tabTicketNonModif[$a['id']] = $a;
+                    }
+                    $tabTraitement[$a['id']] = $t;
+                    break;  
+                }
+            }
         }
 
         return $this->render('ticket/listeTicket.html.twig', [
-            'listeAffichage' => $affichage,
+            'ticketModif' => $tabTicketModif,
+            'ticketNonModif' => $tabTicketNonModif,
             'form' => $form->createView(),
             'presta' => $presta,
-            'traitement' => $traitement,
+            'traitement' => $tabTraitement,
             'colonneTable' => $colonneTable,
-            'priorite'=>$priorite,
-            'impact'=>$impact,
-            'etat'=>$etat,
             'resolution'=>$resolution,
-            'nvxTickets' =>$selectNouveauTicket
+            'nvxTickets' =>$selectNouveauTicket,
+            'listeAffichage' => $affichage
         ]);
     }
 
@@ -298,5 +307,57 @@ class TicketController extends IndexController
             'colonne'=>$colonne,
             'tabTicket' =>$tabTicket
         ]);              
+    }
+
+    /**
+     * @Route("/listeTicketAssigne}" , name = "ticket_assigne")
+     */
+    public function listeTicketAssigne( EntityManagerInterface $manager,Request $request,UserInterface $user){
+        $nom1 = $user->getPrenom();
+        $explode = \explode(" ",$nom1);
+        $nom2= $explode[1]." ".$explode[0];
+
+        $conn = $manager->getConnection();
+        $mesTickets = $conn->query("SELECT * from affichage where assigne != \"\" and assigne = \"$nom1\" or \"$nom2\" order by date_soumission desc")->fetchAll();
+        $colonne = $conn->query("  SELECT COLUMN_NAME  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'affichage' 
+        and COLUMN_NAME  in ( 'assigne','resume', 'resolution' ,'satisfaction', 'rapporteur') ")->fetchAll();
+        //Infos qui servira au filtre
+        $form = $this -> createForm(BoutonType::class);
+        $form-> handleRequest($request);
+        $assigne=$conn     ->query("SELECT DISTINCT(assigne) as nom from affichage where assigne != '' ");
+        $resolution = $conn ->query("SELECT DISTINCT(resolution) as nom from affichage where resolution != ''");
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $filtre_assigne = $_POST['assigne'];
+            $filtre_resolution=$_POST['resolution'];
+            $filtre_date = $_POST['date'];
+            $conn = $manager->getConnection();
+            $affichage = "SELECT * FROM affichage WHERE assigne!=''";
+            //On regarde quel filtre l'utilisateur a choisi et on adapte la requete
+            if($filtre_resolution != "tout"){
+                $affichage = $affichage." AND resolution='$filtre_resolution'";
+            }
+            if($filtre_date != ""){
+                $affichage = $affichage." AND date_soumission='$filtre_date'";
+            }
+            if($filtre_assigne != "tout"){
+                $explode = \explode(" ",$filtre_assigne);
+                $nom2= $explode[1]." ".$explode[0];
+                $affichage = $affichage." AND assigne='$filtre_assigne' or '$nom2'";
+            }
+            // Puis on éxécute la requete
+            $affichage = $affichage." order by date_soumission desc";
+            $mesTickets= $conn->query($affichage)->fetchAll();
+
+        }
+
+        return $this->render('ticket/listeTicketAssigne.html.twig',[
+            'mesTickets'=>$mesTickets,
+            'colonne'=>$colonne,
+            'assigne'=>$assigne,
+            'resolution'=>$resolution,
+            'form'=>$form->createView(),
+            'nomUser' => $nom1
+        ]);
     }
 }

@@ -47,39 +47,6 @@ class AdminController extends AbstractController
             }
         }
 
-        // erreur sur la priorité
-        $selectDistinctPriorite = $conn->query("SELECT priorite , traitement_id as id  from affichage where priorite!= '' ")->fetchAll();
-        $erreurPriorite[0] = 0 ;
-        $PrioriteTropLongue[0] = 0; 
-        $cpErreurPriorite = 0;
-        $cpPrioriteTropLongue = 0 ; 
-        foreach($selectDistinctPriorite as $s){
-            if(is_numeric($s['priorite']) == true){
-                $erreurPriorite[$cpErreurPriorite] = $s['id'];
-                $cpErreurPriorite +=1;
-            }
-            if(\strlen($s['priorite']) > 20 ) {
-                $PrioriteTropLongue[$cpPrioriteTropLongue] = $s['id'];
-                $cpPrioriteTropLongue +=1;
-            } 
-        }
-
-        // erreur sur l'impact
-        $selectDistinctImpact = $conn->query("SELECT impact ,traitement_id as id from affichage where impact!= '' ")->fetchAll();
-        $erreurImpact[0] = 0 ;
-        $impactTropLong[0] = 0; 
-        $cpErreurImpact = 0;
-        $cpImpactTropLong = 0;
-        foreach($selectDistinctImpact as $s){
-            if(is_numeric($s['impact']) == true){
-                $erreurImpact[$cpErreurImpact] = $s['id'];
-                $cpErreurImpact +=1;
-            }
-            if(\strlen($s['impact']) > 20 ) {
-                $impactTropLong[$cpImpactTropLong] =$s['id'];
-                $cpImpactTropLong +=1;
-            } 
-        }
 
         // erreur sur la résolution
         $selectResolution = $conn->query("SELECT resolution , traitement_id as id from affichage where resolution != '' ")->fetchAll();
@@ -98,23 +65,6 @@ class AdminController extends AbstractController
             } 
         }
 
-        // erreur sur les états
-        $selectEtat = $conn->query("SELECT etat , traitement_id as id from affichage where etat != '' ")->fetchAll();
-        $erreurEtat[0]=0;
-        $cpErreurEtat =0;
-        $EtatTropLong[0] = 0;
-        $cpEtatTropLong=0;
-        foreach($selectEtat as $s) {
-            if(is_numeric($s['etat']) == true){
-                $erreurEtat[$cpErreurEtat] = $s['id'];
-                $cpErreurEtat +=1;
-            } 
-            if(\strlen($s['etat']) > 20 ) {
-                $EtatTropLong[$cpEtatTropLong] =$s['id'];
-                $cpEtatTropLong +=1;
-            } 
-        }
-
         // erreur sur les résumé
         $selectResume = $conn->query("SELECT resume , traitement_id as id from affichage where resume != '' ")->fetchAll();
         $erreurResume[0]=0;
@@ -128,14 +78,8 @@ class AdminController extends AbstractController
         return $this->render('admin/erreur_donnees.html.twig',[
             'erreurTemps' => $ErreurTemps,
             'tempsTropLong' => $TempsTropLong,
-            'erreurPriorite' => $erreurPriorite,
-            'prioriteTropLongue' => $PrioriteTropLongue, 
-            'erreurImpact'=>$erreurImpact,
-            'impactTropLong' => $impactTropLong,
             'erreurResolution' => $erreurResolution,
             'ResolutionTropLongue' => $ResolutionTropLongue,
-            'EtatTropLong' => $EtatTropLong,
-            'erreurEtat' => $erreurEtat,
             'erreurResume' => $erreurResume
         ]);
     }

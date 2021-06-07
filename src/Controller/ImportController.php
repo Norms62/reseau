@@ -102,11 +102,20 @@ class ImportController extends IndexController
                 if($tableExist == true){
                     //Pour afficher les colonnes liés entre presta et csv 
                     $ColonnePrestaCsv = $conn->query("SELECT * from csv_$presta")->fetchAll();
+                    //Colonnes du csv qui ne sont pas utiliser 
+                    $colonneNonUtilise = $conn->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = 'intermediaire' and COLUMN_NAME != 'idPresta'
+                                                       and COLUMN_NAME not in ( SELECT colonneCSV from csv_$presta )")->fetchAll();
+                    //Colonnes qui sont dans csv_presta mais plus dans le fichier CSV 
+                    $colonneExistePlus = $conn->query("SELECT ColonneCSV from csv_$presta where ColonneCSV not in 
+                                                       (select COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = 'intermediaire' and COLUMN_NAME != 'idPresta') ")->fetchAll();
+
                     return $this->render('import/messageApresImport.html.twig',[
                         'presta' => $presta,
                         'tableExist' => $tableExist,
                         'colonnePrestaCsv'=>$ColonnePrestaCsv,
-                    ]);
+                        'colonneNonUtilise' => $colonneNonUtilise,
+                        'colonneExistePlus' => $colonneExistePlus
+                    ]); 
                 }
                 else{
                     return $this->render('import/messageApresImport.html.twig',[
@@ -166,10 +175,10 @@ class ImportController extends IndexController
                         $create= $conn->query( "CREATE TABLE csv_$presta ( id INT PRIMARY KEY NOT NULL AUTO_INCREMENT , date_creation VARCHAR(255) , colonnePresta VARCHAR(255) , colonneCSV VARCHAR(255))  ");
                     }
                     //Puis on insère les colonnes choisis par l'utilisateur
-                    foreach($colonnePresta as $c) {
+                    foreach($colonneCSV as $c) {
                         if($_POST[$c['COLUMN_NAME']] != ""){
                             $conn = $manager->getConnection();
-                            $insert = $conn->query("INSERT INTO csv_$presta (colonnePresta , colonneCsv) 
+                            $insert = $conn->query("INSERT INTO csv_$presta (colonneCsv , colonnePresta) 
                                                     VALUES (\"".$c['COLUMN_NAME']."\"  ,\"".$_POST[$c['COLUMN_NAME']]."\")");
                         }
                     }
@@ -232,12 +241,23 @@ class ImportController extends IndexController
                     else{
                         //Reste des colonnes donc on modifie 
                         $update = $conn->query("UPDATE ".$presta." SET ".${'colonnePresta'.$i}." = \"".$ligneInter[${'colonneCSV'.$i}]."\" WHERE id = ".$cpID."");
+                        //Si la date de mise a jour est null , on la crée 00/01/2000
+                        $selectDate = $conn->query("SELECT mise_a_jour from $presta where id = ".$cpID."")->fetch();
+                        if($selectDate['mise_a_jour'] == ''){
+                            $updateMiseAJour = $conn->query("UPDATE ".$presta." SET mise_a_jour = '2000-01-01' WHERE id = ".$cpID."");
+                        }
                     }
                 }
                 //Si le ticket existe déja , on récupère l'id du presta et on le modifie. 
                 else{
                     $idPresta = $conn->query("SELECT id FROM $presta WHERE ref=".$ligneInter[$refColonneCsv])->fetch();
                     $update = $conn->query("UPDATE ".$presta." SET ".${'colonnePresta'.$i}." = \"".$ligneInter[${'colonneCSV'.$i}]."\" WHERE id = ".$idPresta['id']."");
+                    //Si la date de mise a jour est null , on la crée 00/01/2000
+                    $selectDate = $conn->query("SELECT mise_a_jour from $presta where id = ".$idPresta['id']."")->fetch();
+                    if($selectDate['mise_a_jour'] == ''){
+                        $updateMiseAJour = $conn->query("UPDATE ".$presta." SET mise_a_jour = '2000-01-01' WHERE id = ".$idPresta['id']."");
+                    }
+
                 }
             }
         }
