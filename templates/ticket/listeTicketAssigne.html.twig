@@ -45,7 +45,7 @@
 <tbody> 
     {% for t in mesTickets %}
         <tr>
-            <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"><a href= "http://127.0.0.1:8000/ticket/{{t.traitement_id}}" style="color: #0000FF"> {{ t.id }} </a></td>
+            <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"><a href= "https://ticketting.reseau-entreprendre.org/index.php/ticket/{{t.traitement_id}}" style="color: #0000FF"> {{ t.ref }} </a></td>
             <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ t.date_soumission|date('d/m/Y') }} </td>
             {% for c in colonne %}
                 {% if c.COLUMN_NAME == 'temps'%}

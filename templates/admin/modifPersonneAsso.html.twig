@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Asso{% endblock %}
+
+{% block body %}
+<br>
+ <form>
+  <input type="button" class="btn btn-info " value="Retour" onclick="history.go(-1)"> 
+</form>
+<br>
+<center>
+    <h1  style="color : #F4B82A ; font-weight : bold">Modification de la personne : {{personne.nom}} {{personne.prenom}} </h1><br><br>
+</center>
+
+{{form_start(form)}}
+<label> Nom </label>
+<input class="form-control" type="text" size="80" name="nom"  value="{{personne.nom}}" /> <br>
+<label> Prénom </label>
+<input class="form-control" type="text" size="80" name="prenom"  value="{{personne.prenom}}" /> <br>
+<label> Sexe </label>
+<input class="form-control" type="text" size="80" name="sexe"  value="{{personne.sexe}}" /> <br>
+<label> Fonction </label>
+<input class="form-control" type="text" size="80" name="fonction"  value="{{personne.fonction}}" /> <br>
+{{form_widget(form.Envoyer)}}
+<input type="submit" class="btn btn-success" value ="Supprimer la personne" name="btnSupp" ><br><br>
+{{form_end(form)}}
+{% endblock %}

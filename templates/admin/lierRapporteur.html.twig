@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}Lier un rapporteur{% endblock %}
+
+{% block body %}
+<br>
+ <form>
+  <input type="button" class="btn btn-info " value="Retour" onclick="history.go(-1)"> 
+</form>
+<br>
+
+<center>
+    <h1  style="color : #F4B82A ; font-weight : bold">Lier le rapporteur : {{nomRapporteur}}</h1><br><br>
+</center>
+{{form_start(form)}}
+<label>Liste des personnes dans les associations</label>
+<select class="form-control" name="personne">
+    <option value=""> </option>
+    {% for p in personne %} 
+        <option> {{p.nom }} {{p.prenom}} </option>
+    {% endfor %}
+</select><br>
+{{form_widget(form.Envoyer)}}
+{{form_end(form)}}
+{% endblock %}

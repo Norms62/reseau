@@ -47,9 +47,9 @@
     {# Parcours des nouveaux tickets#}
     {% for n in nvxTickets %}
         <tr>
-          <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ n.id }} </td>
+          <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ n.ref }} </td>
           <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">
-            <a href= "http://127.0.0.1:8000/ticket/{{n.id}}" style="color:#0000FF"> {{ n.type }} </a></td>
+            <a href= "https://ticketting.reseau-entreprendre.org/index.php/ticket/{{n.id}}" style="color:#0000FF"> {{ n.type }} </a></td>
           <td style="background-color:#33FFFF ; vertical-align : middle ; border : 1px solid grey" class="text-center">{{n.mise_a_jour|date('d/m/Y')}}</td>
           {% for c in colonneTable %}
               {% if c.COLUMN_NAME == 'temps'%}
@@ -65,9 +65,9 @@
     {# Parcours des tickets modifiés #}
     {% for n in ticketModif %}
         <tr>
-          <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ n.id }} </td>
+          <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ n.ref }} </td>
           <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">
-            <a href= "http://127.0.0.1:8000/ticket/{{n.id}}" style="color:#0000FF"> {{ n.type }} </a></td>
+            <a href= "https://ticketting.reseau-entreprendre.org/index.php/ticket/{{n.id}}" style="color:#0000FF"> {{ n.type }} </a></td>
           <td style="background-color:#00FF00 ; vertical-align : middle ; border : 1px solid grey" class="text-center">{{n.mise_a_jour|date('d/m/Y')}}</td>
           {% for c in colonneTable %}
               {% if c.COLUMN_NAME == 'temps'%}
@@ -86,9 +86,9 @@
     {# Parcours du reste des tickets #}
     {% for a in ticketNonModif %}
       <tr>
-        <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.id }} </td>
+        <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.ref }} </td>
         <td style="vertical-align : middle ; border : 1px solid grey" class="text-center">
-        <a href= "http://127.0.0.1:8000/ticket/{{a.traitement_id}}" style="color: #0000FF"> {{ a.type }} </a></td>
+        <a href= "https://ticketting.reseau-entreprendre.org/index.php/ticket/{{a.traitement_id}}" style="color: #0000FF"> {{ a.type }} </a></td>
         <td style="vertical-align : middle ; border : 1px solid grey" class="text-center"> {{ a.mise_a_jour|date('d/m/Y') }} </td>
         {% for c in colonneTable %}
           {% if c.COLUMN_NAME == 'temps'%}

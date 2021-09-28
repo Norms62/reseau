@@ -3,6 +3,12 @@
 {% block title %}Ajout d'une colonne{% endblock %}
 
 {% block body %}
+<br>
+ <form>
+  <input type="button" class="btn btn-info " value="Retour" onclick="history.go(-1)"> 
+</form>
+<br>
+
     <h1 style="color : #F4B82A ; font-weight : bold"> Ajout d'une nouvelle colonne </h1><br>
     {{ form_start(form) }}
     <h5><label>Nom de la nouvelle colonne </label></h5><br>

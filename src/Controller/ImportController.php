@@ -228,35 +228,27 @@ class ImportController extends IndexController
                 }
             }
             //Parcourt de toutes les colonnes
-            for ($i=1; $i < $cp ; $i++) { 
+            for ($i=1; $i < $cp ; $i++) {
+                $date = new \DateTime();
+                $date = $date->format('Y-m-d');
                 if($TicketExist == false){
                     if($i==1){
                         //Première colonne, donc on insert
                         $insert = $conn->query("INSERT INTO ".$presta." (".${'colonnePresta'.$i}.") VALUES (\"".$ligneInter[${'colonneCSV'.$i}]."\") ");
                         $cpID = $conn->lastInsertId();
-                        $date = new \DateTime();
-                        $date = $date->format('d/m/Y');
                         $update = $conn->query("UPDATE ".$presta." SET date_creation = \"".$date."\" WHERE id = ".$cpID."");
                     }
                     else{
                         //Reste des colonnes donc on modifie 
                         $update = $conn->query("UPDATE ".$presta." SET ".${'colonnePresta'.$i}." = \"".$ligneInter[${'colonneCSV'.$i}]."\" WHERE id = ".$cpID."");
-                        //Si la date de mise a jour est null , on la crée 00/01/2000
-                        $selectDate = $conn->query("SELECT mise_a_jour from $presta where id = ".$cpID."")->fetch();
-                        if($selectDate['mise_a_jour'] == ''){
-                            $updateMiseAJour = $conn->query("UPDATE ".$presta." SET mise_a_jour = '2000-01-01' WHERE id = ".$cpID."");
-                        }
+                            $updateMiseAJour = $conn->query("UPDATE ".$presta." SET mise_a_jour = '".$date."' WHERE id = ".$cpID."");
                     }
                 }
                 //Si le ticket existe déja , on récupère l'id du presta et on le modifie. 
                 else{
                     $idPresta = $conn->query("SELECT id FROM $presta WHERE ref=".$ligneInter[$refColonneCsv])->fetch();
                     $update = $conn->query("UPDATE ".$presta." SET ".${'colonnePresta'.$i}." = \"".$ligneInter[${'colonneCSV'.$i}]."\" WHERE id = ".$idPresta['id']."");
-                    //Si la date de mise a jour est null , on la crée 00/01/2000
-                    $selectDate = $conn->query("SELECT mise_a_jour from $presta where id = ".$idPresta['id']."")->fetch();
-                    if($selectDate['mise_a_jour'] == ''){
-                        $updateMiseAJour = $conn->query("UPDATE ".$presta." SET mise_a_jour = '2000-01-01' WHERE id = ".$idPresta['id']."");
-                    }
+                    $updateMiseAJour = $conn->query("UPDATE ".$presta." SET mise_a_jour = '".$date."' WHERE id = ".$idPresta['id']."");
 
                 }
             }

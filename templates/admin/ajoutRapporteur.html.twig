@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}Ajout d'un rapporteur{% endblock %}
+
+{% block body %}
+<br>
+ <form>
+  <input type="button" class="btn btn-info " value="Retour" onclick="history.go(-1)"> 
+</form>
+<br>
+
+<center>
+    <h1  style="color : #F4B82A ; font-weight : bold">Ajout du rapporteur : {{nomRapporteur}}</h1><br><br>
+</center>
+{{form_start(form)}}
+
+<label>Nom</label>
+<input class="form-control" type="text" size="80" name='nom'  />
+<br>
+<label>Prénom</label>
+<input class="form-control" type="text" size="80" name='prenom'  />
+<br>
+<label>Sexe</label>
+<select class="form-control" name="sexe">
+    <option value=""> </option>
+    <option value="F"> Femme </option>
+    <option value="H"> Homme</option>
+</select>
+<br>
+<label>Fonction</label>
+<input class="form-control" type="text" size="80" name='fonction'  />
+<br>
+<label>Association</label>
+<select class="form-control" name="association">
+    <option value=""> </option>
+    {% for a in association %} 
+        <option> {{a.nom_asso }} </option>
+    {% endfor %}
+</select>
+
+{{form_widget(form.Envoyer)}}
+<input type="submit" class="btn btn-success" value ="Ajouter en tant qu'adresse générique" name="BtnAjouterGenerique" ><br><br>
+{{form_end(form)}}
+{% endblock %}

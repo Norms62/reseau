@@ -1,43 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Statistiques{% endblock %}
+{% block title %}Statistiques  {% endblock %}
 
 {% block body %}
-<h1  style="color : #F4B82A ; font-weight : bold">Statistiques</h1>
+<h1  style="color : #F4B82A ; font-weight : bold">Statistiques de l'année : {{date}}</h1>
 {# Table sur nb et temps des tickets selon le mois #}
+{{form_start(form)}}
+<label style="font-weight : bold">Filtre par année</label>
+<select style="border-color : #59C3B5 ; padding:5px "name="date">
+    {% for t in tabDate %} 
+        <option> {{t }} </option>
+    {% endfor %}
+</select>
+{{form_widget(form.Envoyer)}}
 
 <p class="w-auto mt-2 p-2" style="color : #F4B82A  ; font-size : 25px ; font-weight : bold" > Nombre et temps des tickets par mois</p>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
             <th style="vertical-align : middle ; border : 1px solid black" class="text-center">Mois </th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Jan</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Fev</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Mars</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Avril</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Mai</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Juin</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Juil</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Aout</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Sept</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Oct</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Nov</th>
-            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Dec</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Jan-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Fev-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Mars-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Avril-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Mai-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Juin-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Juil-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Aout-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Sept-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Oct-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Nov-{{date}}</th>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center">Dec-{{date}}</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Nombre de ticket </th>
-            {% for t in tabNbTicket %}
-                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{t}} </td>
-            {% endfor %}
-        </tr>
-        <tr>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/1/{{date}}" style="color: #0000FF">{{tabNbTicket[1]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/2/{{date}}" style="color: #0000FF">{{tabNbTicket[2]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/3/{{date}}" style="color: #0000FF">{{tabNbTicket[3]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/4/{{date}}" style="color: #0000FF">{{tabNbTicket[4]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/5/{{date}}" style="color: #0000FF">{{tabNbTicket[5]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/6/{{date}}" style="color: #0000FF">{{tabNbTicket[6]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/7/{{date}}" style="color: #0000FF">{{tabNbTicket[7]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/8/{{date}}" style="color: #0000FF">{{tabNbTicket[8]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/9/{{date}}" style="color: #0000FF">{{tabNbTicket[9]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/10/{{date}}" style="color: #0000FF">{{tabNbTicket[10]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/11/{{date}}" style="color: #0000FF">{{tabNbTicket[11]}} </td>
+            <td style="vertical-align : middle;border : 1px solid black" class="text-center"> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/12/{{date}}" style="color: #0000FF">{{tabNbTicket[12]}} </td>
+  
+        </tr> 
+        {#<tr>
             <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Temps des tickets </th>
             {% for t in tabTempsTotal %}
                 <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{t|round }} </td>
             {% endfor %}
-        </tr>
+        </tr>#}
     </tbody>
 </table>
 
@@ -59,22 +77,45 @@
             <th style=" vertical-align : middle ; border : 1px solid black" class="text-center"> Nombre de tickets </th>
                 {% for p in presta %}
                     {% for r in resolution %}
-                        <td style="vertical-align : middle ; border : 1px solid black" class="text-center">{{tabNbPrestaResolution[r.resolution][p.nom]}}</td>
+                        <td style="vertical-align : middle ; border : 1px solid black" class="text-center"> 
+                        <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParPrestaResolution/{{p.nom}}/{{r.resolution}}/{{date}}" style="color: #0000FF">{{tabNbPrestaResolution[r.resolution][p.nom]}}</td>
                     {% endfor %}
                 {% endfor %}
         </tr>
-        <tr>
+        {#<tr>
             <th style="verticak-align : middle ; border : 1px solid black" class="text-center"> Temps des tickets (h) </th>
             {% for p in presta %}
                 {% for r in resolution %}
                     <td style="vertical-align : middle ; border : 1px solid black" class="text-center">{{tabTempsPrestaResolution[r.resolution][p.nom] | round}}</td>
                 {% endfor %}
             {% endfor %}
-        </tr>
+        </tr>}#}
     </tbody>
 </table>
 
-
+{# Table sur top 10 asso  #}
+<p class="w-auto mt-2 p-2" style="color : #F4B82A ; font-size : 25px ; font-weight : bold" > Top 10 des associations créant le plus de tickets</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Associations</th>
+            {% for n in nomAsso %}
+                <td style="vertical-align : middle;border : 1px solid black" class="text-center">{{n}} </td>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th style="vertical-align : middle;border : 1px solid black" class="text-center"> Nombre de tickets </th>
+            {% for n in nomAsso %}
+                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> 
+                <a href="https://ticketting.reseau-entreprendre.org/index.php/listeTicketParAssoParAnnee/{{n}}/{{date}}" style="color: #0000FF"> {{nbTicket[n]}} </td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+<br>
+<p style="color : #F4B82A ; font-size : 25px ; font-weight : bold" > -------------------------------------------------------------------</p>
 {# Table sur nb ticket du jour #}
 <p class="w-auto mt-2 p-2" style="color : #F4B82A ; font-size : 25px ; font-weight : bold" > Nombre et temps des tickets selon la date du jour</p>
 <table class="table table-striped table-bordered">
@@ -89,16 +130,20 @@
     <tbody>
         <tr>
             {% for t in ticketDuJour %}
-                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{t.nbTicket }}</td>
+                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> 
+                <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketSelonDateJour/aujourdhui" style="color: #0000FF">{{t.nbTicket }}</td>
             {% endfor %}
             {% for t in ticketHier %}
-                <td style="vertical-align : middle;border : 1px solid black " class="text-center"> {{t.nbTicket }}</td>
+                <td style="vertical-align : middle;border : 1px solid black " class="text-center"> 
+                <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketSelonDateJour/hier" style="color: #0000FF">{{t.nbTicket }}</td>
             {% endfor %}
             {% for t in ticketSemaine %}
-                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{t.nbTicket}} </td>
+                <td style="vertical-align : middle;border : 1px solid black" class="text-center">
+                <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketSelonDateJour/semaine" style="color: #0000FF"> {{t.nbTicket}} </td>
             {% endfor %}
             {% for t in ticketMois %}
-                <td style="vertical-align : middle;border : 1px solid black" class="text-center"> {{t.nbTicket}} </td>
+                <td style="vertical-align : middle;border : 1px solid black" class="text-center">
+                <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicketParMois/{{mois}}/{{date}}" style="color: #0000FF"> {{t.nbTicket}} </td>
             {% endfor %}
         </tr>
     </tbody>

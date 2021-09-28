@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<br>
+ <form>
+  <input type="button" class="btn btn-info " value="Retour" onclick="history.go(-1)"> 
+</form>
+<br>
 
 <h1  style="color : #F4B82A ; font-weight : bold"> Liste des utilisateurs</h1><br>
 {{form_start(form)}}
@@ -25,4 +30,7 @@
 </table>
 {{form_widget(form ,  { 'attr' : {'value' : 'Supprimer'}})}}
 {{form_end(form)}}
+
+<br><br><button type="button" class="btn btn-primary" onclick="document.location.href='{{path('inscription')}}';" >Ajouter un nouvel utilisateur</button><br>
+
 {% endblock %}

@@ -3,6 +3,12 @@
 {% block title %}Erreurs données{% endblock %}
 
 {% block body %}
+<br>
+ <form>
+  <input type="button" class="btn btn-info " value="Retour" onclick="history.go(-1)"> 
+</form>
+<br>
+
 <center>
     <h1  style="color : #F4B82A ; font-weight : bold">Gestion des erreurs de données</h1><br><br>
 </center>
@@ -12,14 +18,14 @@
     {% if erreurTemps[0] != 0  %}
         <h3> {{erreurTemps | length}} tickets dont le temps n'est pas numérique  ---> 
         {% for e in erreurTemps %}
-        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        <a href= "https://ticketting.reseau-entreprendre.org/index.php/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
         {% endfor %}
         </h3>
     {% endif %}
     {% if tempsTropLong[0] != 0 %}
         <h3> {{tempsTropLong | length}} tickets dont le temps parait trop élevé ---> 
         {% for e in tempsTropLong %}
-        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        <a href= "https://ticketting.reseau-entreprendre.org/index.php/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
         {% endfor %}
         </h3>
     {% endif %}
@@ -32,14 +38,14 @@
     {% if erreurResolution[0] != 0  %}
         <h3> {{erreurResolution | length}} tickets dont la résolution est numérique  ---> 
         {% for e in erreurResolution %}
-        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        <a href= "https://ticketting.reseau-entreprendre.org/index.php/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
         {% endfor %}
         </h3>
     {% endif %}
     {% if ResolutionTropLongue[0] != 0 %}
         <h3> {{ResolutionTropLongue | length}} tickets dont la résolution semble incorrecte car la longueur de chaine est trop grande ---> 
         {% for e in ResolutionTropLongue %}
-        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        <a href= "https://ticketting.reseau-entreprendre.org/index.php/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
         {% endfor %}
         </h3>
     {% endif %}
@@ -52,7 +58,7 @@
     {% if erreurResume[0] != 0  %}
         <h3> {{erreurResume | length}} tickets dont le résumé semble incorrecte car la longueur de chaine est trop grande ---> 
         {% for e in erreurResume %}
-        <a href= "http://127.0.0.1:8000/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
+        <a href= "https://ticketting.reseau-entreprendre.org/index.php/ticket/{{e}}" style="color: #0000FF"> {{ e }} </a> , 
         {% endfor %}
         </h3>
     {% endif %}

@@ -3,16 +3,20 @@
 {% block title %}Supprimer tickets{% endblock %}
 
 {% block body %}
- 
+<br>
+ <form>
+  <input type="button" class="btn btn-info " value="Retour" onclick="history.go(-1)"> 
+</form>
+<br>
 <h1  style="color : #F4B82A ; font-weight : bold">Suppression de plusieurs tickets</h1><br>
 <h3> Vous pouvez supprimer les tickets d'un prestataire et/ou selon une résolution et/ou les tickets datant de plus de "n" mois. </h3>
 <h3> Attention , une fois la validé, la suppression est définitive.</h3> <br>
     {{form_start(form)}}
-    <label style="font-size : 22px ;font-weight : bold">Supprimer tous les tickets d'un prestataire</label><br>
-    <select style="border-color : #59C3B5 ; padding:5px "name="nomPresta">
+    <label style="font-size : 22px ;font-weight : bold">Supprimer tous les tickets d'une personne assignée</label><br>
+    <select style="border-color : #59C3B5 ; padding:5px "name="assigne">
       <option value="non">  </option>
-      {% for p in presta %} 
-          <option> {{p.nom }} </option>
+      {% for a in assigne %} 
+          <option> {{a.assigne }} </option>
       {% endfor %}
     </select><br><br>
     <label style="font-size : 22px ;font-weight : bold">Supprimer les tickets selon une résolution </label><br>

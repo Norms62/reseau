@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}Rapporteurs non présents {% endblock %}
+
+{% block body %}
+<br>
+ <form>
+  <input type="button" class="btn btn-info " value="Retour" onclick="history.go(-1)"> 
+</form>
+<br>
+
+<center>
+    <h1  style="color : #F4B82A ; font-weight : bold">Liste des rapporteurs non présents dans l'association ( {{cp}} )</h1><br><br>
+</center>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nom Complet</th>
+            <th> Lier </th>
+            <th> Ajouter </th>
+        </tr>
+    </thead>
+    {% for t in tab %}
+        <tr>
+            <td> <a href= "https://ticketting.reseau-entreprendre.org/index.php/listeTicket/{{t}}" style="color: #0000FF"> {{t}}</td>
+            <td> <a href= "https://ticketting.reseau-entreprendre.org/index.php/lierRapporteur/{{t}}" style="color: #0000FF"> Lier</td>
+            <td> <a href= "https://ticketting.reseau-entreprendre.org/index.php/ajoutRapporteur/{{t}}" style="color: #0000FF"> Ajouter</td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

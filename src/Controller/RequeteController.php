@@ -158,7 +158,7 @@ class RequeteController extends AbstractController
         // affichage des colonnes
         $conn = $manager->getConnection();
         $colonne= $conn->query("SELECT COLUMN_NAME  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'traitement' 
-                                and COLUMN_NAME not in ('id','date_creation','nb_ticket_regroup','type','action' , 'commentaire','ref','date_soumission','mise_a_jour')
+                                and COLUMN_NAME not in ('id','date_creation','nb_ticket_regroup','type','ref','date_soumission','mise_a_jour')
                                 and COLUMN_NAME not like ('ticket%')")->fetchAll();
         // si c'est validé, on parcourt les colonnes cochées et on supprime dans tous les prestas , traitement et affichage
         if($form->isSubmitted() && $form->isValid()){

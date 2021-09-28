@@ -3,6 +3,12 @@
 {% block title %}Suppression colonne {% endblock %}
 
 {% block body %}
+<br>
+ <form>
+  <input type="button" class="btn btn-info " value="Retour" onclick="history.go(-1)"> 
+</form>
+<br>
+
     <h1 style="color : #F4B82A ; font-weight : bold">Suppression d'une ou plusieurs colonnes </h1><br>
     <table class="table table-striped table-bordered">
         <thead><tr>
@@ -18,4 +24,6 @@
         </table><br>
         {{form_widget(form ,  { 'attr' : {'value' : 'Supprimer'}})}}
         {{form_end(form)}}
+
+            <button type="button" class="btn btn-success" onclick="document.location.href='{{path('ajoutColonne')}}';" >Ajouter une colonne</button><br><br>
 {% endblock %}
